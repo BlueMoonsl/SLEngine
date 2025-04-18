@@ -8,7 +8,12 @@
 	#endif
 #else
 	#error Hazel only supports Windows!
-#endif // HZ_PLATFORM_WINDOWS
+#endif
+
+
+#ifdef SL_DEBUG
+	#define SL_ENABLE_ASSERTS
+#endif
 
 #ifdef SL_ENABLE_ASSERTS
 	#define SL_ASSERT(x, ...) { if(!(x)) { SL_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
@@ -17,6 +22,7 @@
 	#define SL_ASSERT(x, ...)
 	#define SL_CORE_ASSERT(x, ...)
 #endif
+
 
 #define BIT(x) (1 << x)
 

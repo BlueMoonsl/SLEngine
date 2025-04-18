@@ -26,6 +26,8 @@ project "SLEngine"
 	location "SLEngine"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
+
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
@@ -69,16 +71,19 @@ project "SLEngine"
 	filter "configurations:Debug"
 		defines "SL_DEBUG"
 		buildoptions "/MDd"
+		--runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "SL_RELEASE"
 		buildoptions "/MD"
+		--runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "SL_DIST"
 		buildoptions "/MD"
+		--runtime "Release"
 		optimize "On"
 
 project "Sandbox"
@@ -116,14 +121,17 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "SL_DEBUG"
 		buildoptions "/MDd"
+		--runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "SL_RELEASE"
 		buildoptions "/MD"
+		--runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "SL_DIST"
 		buildoptions "/MD"
+		--runtime "Release"
 		optimize "On"
