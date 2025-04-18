@@ -7,3 +7,6 @@
 [submodule "SLEngine/vendor/imgui"]
 	path = SLEngine/vendor/imgui
 	url = https://github.com/TheCherno/imgui.git
+[submodule "SLEngine/vendor/glm"]
+	path = SLEngine/vendor/glm
+	url = https://github.com/g-truc/glm.git
