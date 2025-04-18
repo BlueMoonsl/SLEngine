@@ -168,9 +168,11 @@
     <ClInclude Include="src\SLEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\SLEngine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\SLEngine\Input.h" />
+    <ClInclude Include="src\SLEngine\KeyCodes.h" />
     <ClInclude Include="src\SLEngine\Layer.h" />
     <ClInclude Include="src\SLEngine\LayerStack.h" />
     <ClInclude Include="src\SLEngine\Log.h" />
+    <ClInclude Include="src\SLEngine\MouseButtonCodes.h" />
     <ClInclude Include="src\SLEngine\Window.h" />
     <ClInclude Include="src\slpch.h" />
   </ItemGroup>

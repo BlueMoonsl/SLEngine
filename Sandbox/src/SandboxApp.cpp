@@ -10,12 +10,19 @@ public:
 
     void OnUpdate() override
     {
-        SL_INFO("ExampleLayer::Update");
+		if (SLEngine::Input::IsKeyPressed(SL_KEY_TAB))
+			SL_TRACE("Tab key is pressed (poll)!");
     }
 
     void OnEvent(SLEngine::Event& event) override
     {
-        SL_TRACE("{0}", event.ToString());
+		if (event.GetEventType() == SLEngine::EventType::KeyPressed)
+		{
+			SLEngine::KeyPressedEvent& e = (SLEngine::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == SL_KEY_TAB)
+				SL_TRACE("Tab key is pressed (event)!");
+			SL_TRACE("{0}", (char)e.GetKeyCode());
+		}
     }
 
 };

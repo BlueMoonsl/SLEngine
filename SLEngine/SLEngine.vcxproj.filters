@@ -71,6 +71,8 @@
       <Filter>SLEngine</Filter>
     </ClInclude>
     <ClInclude Include="src\slpch.h" />
+    <ClInclude Include="src\SLEngine\KeyCodes.h" />
+    <ClInclude Include="src\SLEngine\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
