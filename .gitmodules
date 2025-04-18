@@ -1,0 +1,9 @@
+[submodule "SLEngine/vendor/spdlog"]
+	path = SLEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "SLEngine/vendor/GLFW"]
+	path = SLEngine/vendor/GLFW
+	url = https://github.com/TheCherno/glfw.git
+[submodule "SLEngine/vendor/imgui"]
+	path = SLEngine/vendor/imgui
+	url = https://github.com/TheCherno/imgui.git
