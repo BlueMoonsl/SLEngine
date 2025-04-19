@@ -15,11 +15,16 @@ namespace SLEngine {
 
     void OpenGLContext::Init()
     {
-        // ½«ÎÒÃÇ´°¿ÚµÄÉÏÏÂÎÄÉèÖÃÎªµ±Ç°Ïß³ÌµÄÖ÷ÉÏÏÂÎÄ
+        // å°†æˆ‘ä»¬çª—å£çš„ä¸Šä¸‹æ–‡è®¾ç½®ä¸ºå½“å‰çº¿ç¨‹çš„ä¸»ä¸Šä¸‹æ–‡
         glfwMakeContextCurrent(m_WindowHandle);
-        // »ñÈ¡ÏÔ¿¨OpenGLº¯Êı¶¨ÒåµÄµØÖ·
+        // è·å–æ˜¾å¡OpenGLå‡½æ•°å®šä¹‰çš„åœ°å€
         int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
         SL_CORE_ASSERT(status, "Failed to initialize Glad!");
+        // è¾“å‡ºæ˜¾å¡ä¿¡æ¯
+        SL_CORE_INFO("OpenGL Info:");
+        SL_CORE_INFO("  Vendor: {0}", (const char*)glGetString(GL_VENDOR));
+        SL_CORE_INFO("  Renderer: {0}", (const char*)glGetString(GL_RENDERER));
+        SL_CORE_INFO("  Version: {0}", (const char*)glGetString(GL_VERSION));
     }
 
     void OpenGLContext::SwapBuffers()
