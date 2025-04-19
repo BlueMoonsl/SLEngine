@@ -6,6 +6,8 @@
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
 
+#include "SLEngine/ImGui/ImGuiLayer.h"
+
 namespace SLEngine
 {
 	class SLENGINE_API Application
@@ -27,6 +29,7 @@ namespace SLEngine
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:

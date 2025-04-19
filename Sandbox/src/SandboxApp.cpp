@@ -1,5 +1,7 @@
 #include <SLEngine.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public SLEngine::Layer
 {
 public:
@@ -13,6 +15,13 @@ public:
 		if (SLEngine::Input::IsKeyPressed(SL_KEY_TAB))
 			SL_TRACE("Tab key is pressed (poll)!");
     }
+
+	/*virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
+	}*/
 
     void OnEvent(SLEngine::Event& event) override
     {
@@ -32,7 +41,6 @@ public:
 	Sandbox()
 	{
         PushLayer(new ExampleLayer());
-        PushOverlay(new SLEngine::ImGuiLayer());
 	}
 	~Sandbox()
 	{

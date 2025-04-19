@@ -17,6 +17,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "SLEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "SLEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "SLEngine/vendor/imgui"
+IncludeDir["glm"] = "SLEngine/vendor/glm"
 
 include "SLEngine/vendor/GLFW"
 include "SLEngine/vendor/Glad"
@@ -36,7 +37,9 @@ project "SLEngine"
 
 	files{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs{
@@ -44,7 +47,8 @@ project "SLEngine"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 	links { 
 		"GLFW",
@@ -102,7 +106,9 @@ project "Sandbox"
 
 	includedirs{
 		"SLEngine/vendor/spdlog/include",
-		"SLEngine/src"
+		"SLEngine/src",
+		"SLEngine/vendor",
+		"%{IncludeDir.glm}"
 	}
 
 	links{
