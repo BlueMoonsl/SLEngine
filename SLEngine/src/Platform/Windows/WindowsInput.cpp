@@ -5,12 +5,12 @@
 #include <GLFW/glfw3.h>
 
 namespace SLEngine {
-	// ¸¸ÀàÖ¸ÕëÖ¸Ïò×ÓÀà¶ÔÏó
-	Input* Input::s_Instance = new WindowsInput();// ¶¨Òå¾²Ì¬µ¥ÀıÈ«¾Ö¶ÔÏó
+	// çˆ¶ç±»æŒ‡é’ˆæŒ‡å‘å­ç±»å¯¹è±¡
+	Input* Input::s_Instance = new WindowsInput();// å®šä¹‰é™æ€å•ä¾‹å…¨å±€å¯¹è±¡
 	bool WindowsInput::IsKeyPressedImpl(int keycode) {
-		// »ñÈ¡GLFWÔ­Éú´°¿Úvoid*£¬×ªÎªGLFWwindow*
+		// è·å–GLFWåŸç”Ÿçª—å£void*ï¼Œè½¬ä¸ºGLFWwindow*
 		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
-		// ÓÃÒÑÓĞµÄGLFWº¯ÊıÀ´»ñÈ¡°´¼ü×´Ì¬
+		// ç”¨å·²æœ‰çš„GLFWå‡½æ•°æ¥è·å–æŒ‰é”®çŠ¶æ€
 		auto state = glfwGetKey(window, keycode);
 		return state == GLFW_PRESS || state == GLFW_REPEAT;
 	}
@@ -27,10 +27,10 @@ namespace SLEngine {
 		return { (float)xpos, (float)ypos };
 	}
 	float WindowsInput::GetMouseXImpl() {
-		// C++17Ğ´·¨
+		// C++17å†™æ³•
 		auto [x, y] = GetMousePositionImpl();
 		return x;
-		// C++14ÒÔÏÂ
+		// C++14ä»¥ä¸‹
 		//auto x = GetMousePositionImpl();
 		//return std::get<0>(x);
 	}

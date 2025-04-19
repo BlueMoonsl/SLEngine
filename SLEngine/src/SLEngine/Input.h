@@ -18,6 +18,6 @@ namespace SLEngine {
 		virtual float GetMouseXImpl() = 0;
 		virtual float GetMouseYImpl() = 0;
 	private:
-		static Input* s_Instance;// 声明静态单例全局对象
+		static Input* s_Instance;// 澹版槑闈欐�佸崟渚嬪叏灞�瀵硅薄
 	};
 }

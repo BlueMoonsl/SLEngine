@@ -35,7 +35,7 @@ namespace SLEngine {
         virtual bool IsVSync() const = 0;
 
 		virtual void* GetNativeWindow() const = 0;
-        //Æ½Ì¨ÀàĞÍÓ¦¸ÃÔÚ±àÒëÊ±ÆÚ¾ÍÈ·¶¨µÄ£¬ËùÒÔ´´½¨¶ÔÓ¦Æ½Ì¨µÄ´°¿Úº¯ÊıÓ¦Îª¾²Ì¬
+        //å¹³å°ç±»å‹åº”è¯¥åœ¨ç¼–è¯‘æ—¶æœŸå°±ç¡®å®šçš„ï¼Œæ‰€ä»¥åˆ›å»ºå¯¹åº”å¹³å°çš„çª—å£å‡½æ•°åº”ä¸ºé™æ€
         static Window* Create(const WindowProps& props = WindowProps());
     };
 }

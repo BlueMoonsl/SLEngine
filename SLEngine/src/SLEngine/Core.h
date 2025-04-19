@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef SL_PLATFORM_WINDOWS
+#if SL_DYNAMIC_LINK
 	#ifdef SL_BUILD_DLL
 		#define SLENGINE_API __declspec(dllexport)
 	#else
 		#define SLENGINE_API __declspec(dllimport)
 	#endif
+#else
+	#define SLENGINE_API
+#endif
 #else
 	#error Hazel only supports Windows!
 #endif

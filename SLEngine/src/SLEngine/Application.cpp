@@ -65,7 +65,7 @@ namespace SLEngine
 
 		while (m_Running)
 		{
-			// ´°¿ÚÑÕÉ«ÉèÖÃÎª·ÛÉ«
+			// çª—å£é¢œè‰²è®¾ç½®ä¸ºç²‰è‰²
 			glClearColor(1, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
