@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\SLEngine.h" />
@@ -169,6 +170,7 @@
     <ClInclude Include="src\SLEngine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\SLEngine\Renderer\Renderer.h" />
     <ClInclude Include="src\SLEngine\Renderer\Shader.h" />
+    <ClInclude Include="src\SLEngine\Renderer\VertexArray.h" />
     <ClInclude Include="src\SLEngine\Window.h" />
     <ClInclude Include="src\slpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -597,6 +599,9 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -628,6 +633,9 @@
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\Shader.cpp">
+      <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Renderer\VertexArray.cpp">
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\slpch.cpp">

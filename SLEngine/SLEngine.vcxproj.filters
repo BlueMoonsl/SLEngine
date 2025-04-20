@@ -54,6 +54,9 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
@@ -115,6 +118,9 @@
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Renderer\Shader.h">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Renderer\VertexArray.h">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Window.h">
@@ -1385,6 +1391,9 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
@@ -1416,6 +1425,9 @@
       <Filter>src\SLEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\Shader.cpp">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Renderer\VertexArray.cpp">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\slpch.cpp">
