@@ -25,7 +25,7 @@ namespace SLEngine
 #define SL_CORE_INFO(...)   ::SLEngine::Log::GetCoreLogger()->info(__VA_ARGS__)
 #define SL_CORE_WARN(...)   ::SLEngine::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define SL_CORE_ERROR(...)  ::SLEngine::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define SL_CORE_FATAL(...)  ::SLEngine::Log::GetCoreLogger()->fatal(__VA_ARGS__)
+#define SL_CORE_FATAL(...)  ::SLEngine::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
 
 // Client log macros
@@ -33,6 +33,6 @@ namespace SLEngine
 #define SL_INFO(...)		::SLEngine::Log::GetClientLogger()->info(__VA_ARGS__)
 #define SL_WARN(...)		::SLEngine::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define SL_ERROR(...)		::SLEngine::Log::GetClientLogger()->error(__VA_ARGS__)
-#define SL_FATAL(...)		::SLEngine::Log::GetClientLogger()->fatal(__VA_ARGS__)
+#define SL_FATAL(...)		::SLEngine::Log::GetClientLogger()->critical(__VA_ARGS__)
 
 
