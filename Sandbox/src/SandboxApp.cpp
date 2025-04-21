@@ -6,34 +6,173 @@ class ExampleLayer : public SLEngine::Layer
 {
 public:
     ExampleLayer()
-        : Layer("Example")
+		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
     {
+        m_VertexArray.reset(SLEngine::VertexArray::Create());
+
+        float vertices[3 * 7] = {
+            -0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
+             0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
+             0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
+        };
+
+        std::shared_ptr<SLEngine::VertexBuffer> vertexBuffer;
+        vertexBuffer.reset(SLEngine::VertexBuffer::Create(vertices, sizeof(vertices)));
+        SLEngine::BufferLayout layout = {
+            { SLEngine::ShaderDataType::Float3, "a_Position" },
+            { SLEngine::ShaderDataType::Float4, "a_Color" }
+        };
+        vertexBuffer->SetLayout(layout);
+        m_VertexArray->AddVertexBuffer(vertexBuffer);
+
+        uint32_t indices[3] = { 0, 1, 2 };
+        std::shared_ptr<SLEngine::IndexBuffer> indexBuffer;
+        indexBuffer.reset(SLEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+        m_VertexArray->SetIndexBuffer(indexBuffer);
+
+        m_SquareVA.reset(SLEngine::VertexArray::Create());
+
+        float squareVertices[3 * 4] = {
+            -0.75f, -0.75f, 0.0f,
+             0.75f, -0.75f, 0.0f,
+             0.75f,  0.75f, 0.0f,
+            -0.75f,  0.75f, 0.0f
+        };
+
+        std::shared_ptr<SLEngine::VertexBuffer> squareVB;
+        squareVB.reset(SLEngine::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+        squareVB->SetLayout({
+            { SLEngine::ShaderDataType::Float3, "a_Position" }
+            });
+        m_SquareVA->AddVertexBuffer(squareVB);
+
+        uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
+        std::shared_ptr<SLEngine::IndexBuffer> squareIB;
+        squareIB.reset(SLEngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+        m_SquareVA->SetIndexBuffer(squareIB);
+
+        std::string vertexSrc = R"(
+ 			#version 330 core
+ 			
+ 			layout(location = 0) in vec3 a_Position;
+ 			layout(location = 1) in vec4 a_Color;
+ 
+ 			uniform mat4 u_ViewProjection;
+ 
+ 			out vec3 v_Position;
+ 			out vec4 v_Color;
+ 
+ 			void main()
+ 			{
+ 				v_Position = a_Position;
+ 				v_Color = a_Color;
+ 				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);	
+ 			}
+ 		)";
+
+        std::string fragmentSrc = R"(
+ 			#version 330 core
+ 			
+ 			layout(location = 0) out vec4 color;
+ 
+ 			in vec3 v_Position;
+ 			in vec4 v_Color;
+ 
+ 			void main()
+ 			{
+ 				color = vec4(v_Position * 0.5 + 0.5, 1.0);
+ 				color = v_Color;
+ 			}
+ 		)";
+
+        m_Shader.reset(new SLEngine::Shader(vertexSrc, fragmentSrc));
+
+        std::string blueShaderVertexSrc = R"(
+ 			#version 330 core
+ 			
+ 			layout(location = 0) in vec3 a_Position;
+ 
+ 			uniform mat4 u_ViewProjection;
+ 
+ 			out vec3 v_Position;
+ 
+ 			void main()
+ 			{
+ 				v_Position = a_Position;
+ 				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);	
+ 			}
+ 		)";
+
+        std::string blueShaderFragmentSrc = R"(
+ 			#version 330 core
+ 			
+ 			layout(location = 0) out vec4 color;
+ 
+ 			in vec3 v_Position;
+ 
+ 			void main()
+ 			{
+ 				color = vec4(0.2, 0.3, 0.8, 1.0);
+ 			}
+ 		)";
+
+        m_BlueShader.reset(new SLEngine::Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
     }
 
-    void OnUpdate() override
+    void OnUpdate(SLEngine::Timestep ts) override
     {
-		if (SLEngine::Input::IsKeyPressed(SL_KEY_TAB))
-			SL_TRACE("Tab key is pressed (poll)!");
+        if (SLEngine::Input::IsKeyPressed(SL_KEY_LEFT))
+            m_CameraPosition.x -= m_CameraMoveSpeed * ts;
+        else if (SLEngine::Input::IsKeyPressed(SL_KEY_RIGHT))
+            m_CameraPosition.x += m_CameraMoveSpeed * ts;
+
+        if (SLEngine::Input::IsKeyPressed(SL_KEY_UP))
+            m_CameraPosition.y += m_CameraMoveSpeed * ts;
+        else if (SLEngine::Input::IsKeyPressed(SL_KEY_DOWN))
+            m_CameraPosition.y -= m_CameraMoveSpeed * ts;
+
+        if (SLEngine::Input::IsKeyPressed(SL_KEY_A))
+            m_CameraRotation += m_CameraRotationSpeed * ts;
+        if (SLEngine::Input::IsKeyPressed(SL_KEY_D))
+            m_CameraRotation -= m_CameraRotationSpeed * ts;
+
+        SLEngine::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+        SLEngine::RenderCommand::Clear();
+
+        m_Camera.SetPosition(m_CameraPosition);
+        m_Camera.SetRotation(m_CameraRotation);
+
+        SLEngine::Renderer::BeginScene(m_Camera);
+        
+        SLEngine::Renderer::Submit(m_BlueShader, m_SquareVA);
+        SLEngine::Renderer::Submit(m_Shader, m_VertexArray);
+        
+        SLEngine::Renderer::EndScene();
     }
 
-	/*virtual void OnImGuiRender() override
+	virtual void OnImGuiRender() override
 	{
-		ImGui::Begin("Test");
-		ImGui::Text("Hello World");
-		ImGui::End();
-	}*/
+		
+	}
 
     void OnEvent(SLEngine::Event& event) override
     {
-		if (event.GetEventType() == SLEngine::EventType::KeyPressed)
-		{
-			SLEngine::KeyPressedEvent& e = (SLEngine::KeyPressedEvent&)event;
-			if (e.GetKeyCode() == SL_KEY_TAB)
-				SL_TRACE("Tab key is pressed (event)!");
-			SL_TRACE("{0}", (char)e.GetKeyCode());
-		}
+		
     }
 
+    private:
+        std::shared_ptr<SLEngine::Shader> m_Shader;
+        std::shared_ptr<SLEngine::VertexArray> m_VertexArray;
+
+        std::shared_ptr<SLEngine::Shader> m_BlueShader;
+        std::shared_ptr<SLEngine::VertexArray> m_SquareVA;
+
+        SLEngine::OrthographicCamera m_Camera;
+        glm::vec3 m_CameraPosition;
+        float m_CameraMoveSpeed = 5.0f;
+
+        float m_CameraRotation = 0.0f;
+        float m_CameraRotationSpeed = 180.0f;
 };
 
 class Sandbox : public SLEngine::Application {

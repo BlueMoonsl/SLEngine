@@ -6,16 +6,12 @@
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
 
+#include "SLEngine/Core/Timestep.h"
 #include "SLEngine/ImGui/ImGuiLayer.h"
-#include "SLEngine/Renderer/Shader.h"
-#include "SLEngine/Renderer/Buffer.h"
-#include "SLEngine/Renderer/VertexArray.h"
-
-#include "SLEngine/Renderer/OrthographicCamera.h"
 
 namespace SLEngine
 {
-	class SLENGINE_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -33,18 +29,13 @@ namespace SLEngine
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};
