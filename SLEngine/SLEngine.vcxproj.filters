@@ -117,6 +117,9 @@
     <ClInclude Include="src\SLEngine\Renderer\GraphicsContext.h">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\Renderer\OrthographicCamera.h">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\SLEngine\Renderer\RenderCommand.h">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
@@ -1431,6 +1434,9 @@
       <Filter>src\SLEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\Buffer.cpp">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Renderer\OrthographicCamera.cpp">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\RenderCommand.cpp">

@@ -11,6 +11,8 @@
 #include "SLEngine/Renderer/Buffer.h"
 #include "SLEngine/Renderer/VertexArray.h"
 
+#include "SLEngine/Renderer/OrthographicCamera.h"
+
 namespace SLEngine
 {
 	class SLENGINE_API Application
@@ -41,6 +43,8 @@ namespace SLEngine
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
