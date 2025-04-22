@@ -16,6 +16,9 @@
     <Filter Include="src\SLEngine">
       <UniqueIdentifier>{511EC4C8-3D81-536D-E606-8C23D2481FF0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\SLEngine\Core">
+      <UniqueIdentifier>{49DD719E-B5F3-6F34-FE6A-FB556AC040BC}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\SLEngine\Events">
       <UniqueIdentifier>{15658007-81C6-5D15-0A34-A4C7769494D4}</UniqueIdentifier>
     </Filter>
@@ -57,6 +60,9 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -74,6 +80,9 @@
     </ClInclude>
     <ClInclude Include="src\SLEngine\Core.h">
       <Filter>src\SLEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Core\Timestep.h">
+      <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\EntryPoint.h">
       <Filter>src\SLEngine</Filter>
@@ -1395,7 +1404,6 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\SLEngine\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1405,6 +1413,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
