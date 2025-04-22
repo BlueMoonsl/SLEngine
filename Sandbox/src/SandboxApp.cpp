@@ -163,6 +163,7 @@ public:
         m_TextureShader.reset(SLEngine::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
 
         m_Texture = SLEngine::Texture2D::Create("assets/textures/Checkerboard.png");
+        m_ChernoLogoTexture = SLEngine::Texture2D::Create("assets/textures/ChernoLogo.png");
 
         std::dynamic_pointer_cast<SLEngine::OpenGLShader>(m_TextureShader)->Bind();
         std::dynamic_pointer_cast<SLEngine::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
@@ -209,6 +210,8 @@ public:
         }
         m_Texture->Bind();
         SLEngine::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+        m_ChernoLogoTexture->Bind();
+        SLEngine::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
         // Triangle
         // Hazel::Renderer::Submit(m_Shader, m_VertexArray);
@@ -235,7 +238,7 @@ private:
     SLEngine::Ref<SLEngine::Shader> m_FlatColorShader, m_TextureShader;
     SLEngine::Ref<SLEngine::VertexArray> m_SquareVA;
 
-    SLEngine::Ref<SLEngine::Texture2D> m_Texture;
+    SLEngine::Ref<SLEngine::Texture2D> m_Texture, m_ChernoLogoTexture;
 
     SLEngine::OrthographicCamera m_Camera;
     glm::vec3 m_CameraPosition;
