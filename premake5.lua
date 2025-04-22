@@ -18,6 +18,7 @@ IncludeDir["GLFW"] = "SLEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "SLEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "SLEngine/vendor/imgui"
 IncludeDir["glm"] = "SLEngine/vendor/glm"
+IncludeDir["stb_image"] = "SLEngine/vendor/stb_image"
 
 include "SLEngine/vendor/GLFW"
 include "SLEngine/vendor/Glad"
@@ -39,6 +40,8 @@ project "SLEngine"
 	files{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+ 		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
@@ -53,7 +56,8 @@ project "SLEngine"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+ 		"%{IncludeDir.stb_image}"
 	}
 	links { 
 		"GLFW",
