@@ -11,6 +11,11 @@ workspace "SLEngine"
 
 	startproject "Sandbox"
 
+	flags
+ 	{
+ 		"MultiProcessorCompile"
+ 	}
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
