@@ -91,7 +91,7 @@ public:
  			}
  		)";
 
-        m_Shader.reset(SLEngine::Shader::Create(vertexSrc, fragmentSrc));
+        m_Shader = SLEngine::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
         std::string flatColorShaderVertexSrc = R"(
  			#version 330 core
@@ -125,15 +125,15 @@ public:
  			}
  		)";
 
-        m_FlatColorShader.reset(SLEngine::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));      
+        m_FlatColorShader = SLEngine::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
-        m_TextureShader.reset(SLEngine::Shader::Create("assets/shaders/Texture.glsl"));
+        auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
         m_Texture = SLEngine::Texture2D::Create("assets/textures/Checkerboard.png");
         m_ChernoLogoTexture = SLEngine::Texture2D::Create("assets/textures/ChernoLogo.png");
 
-        std::dynamic_pointer_cast<SLEngine::OpenGLShader>(m_TextureShader)->Bind();
-        std::dynamic_pointer_cast<SLEngine::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+        std::dynamic_pointer_cast<SLEngine::OpenGLShader>(textureShader)->Bind();
+        std::dynamic_pointer_cast<SLEngine::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
     }
 
     void OnUpdate(SLEngine::Timestep ts) override
@@ -175,10 +175,13 @@ public:
                 SLEngine::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
             }
         }
+
+        auto textureShader = m_ShaderLibrary.Get("Texture");
+
         m_Texture->Bind();
-        SLEngine::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+        SLEngine::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
         m_ChernoLogoTexture->Bind();
-        SLEngine::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+        SLEngine::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
         // Triangle
         // Hazel::Renderer::Submit(m_Shader, m_VertexArray);
@@ -199,10 +202,11 @@ public:
     }
 
 private:
+    SLEngine::ShaderLibrary m_ShaderLibrary;
     SLEngine::Ref<SLEngine::Shader> m_Shader;
     SLEngine::Ref<SLEngine::VertexArray> m_VertexArray;
 
-    SLEngine::Ref<SLEngine::Shader> m_FlatColorShader, m_TextureShader;
+    SLEngine::Ref<SLEngine::Shader> m_FlatColorShader;
     SLEngine::Ref<SLEngine::VertexArray> m_SquareVA;
 
     SLEngine::Ref<SLEngine::Texture2D> m_Texture, m_ChernoLogoTexture;
