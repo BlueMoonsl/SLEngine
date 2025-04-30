@@ -126,6 +126,9 @@
     <ClInclude Include="src\SLEngine\MouseButtonCodes.h">
       <Filter>src\SLEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\OrthographicCameraController.h">
+      <Filter>src\SLEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\SLEngine\Renderer\Buffer.h">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
@@ -1458,6 +1461,9 @@
       <Filter>src\SLEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Log.cpp">
+      <Filter>src\SLEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\OrthographicCameraController.cpp">
       <Filter>src\SLEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\Buffer.cpp">

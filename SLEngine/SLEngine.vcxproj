@@ -170,6 +170,7 @@
     <ClInclude Include="src\SLEngine\LayerStack.h" />
     <ClInclude Include="src\SLEngine\Log.h" />
     <ClInclude Include="src\SLEngine\MouseButtonCodes.h" />
+    <ClInclude Include="src\SLEngine\OrthographicCameraController.h" />
     <ClInclude Include="src\SLEngine\Renderer\Buffer.h" />
     <ClInclude Include="src\SLEngine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\SLEngine\Renderer\OrthographicCamera.h" />
@@ -642,6 +643,9 @@
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Log.cpp">
+      <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\OrthographicCameraController.cpp">
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\Buffer.cpp">
