@@ -23,8 +23,3 @@
 #include "SLEngine/Renderer/VertexArray.h"
 		  
 #include "SLEngine/Renderer/OrthographicCamera.h"
-// -----------------------------------
-
-// ------------ Entry Point-------------
-#include "SLEngine/Core/EntryPoint.h"
-//----------------------------------------

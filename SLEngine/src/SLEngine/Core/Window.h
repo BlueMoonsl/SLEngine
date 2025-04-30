@@ -35,7 +35,7 @@ namespace SLEngine {
         virtual bool IsVSync() const = 0;
 
 		virtual void* GetNativeWindow() const = 0;
-        //平台类型应该在编译时期就确定的，所以创建对应平台的窗口函数应为静态
+        
         static Window* Create(const WindowProps& props = WindowProps());
     };
 }

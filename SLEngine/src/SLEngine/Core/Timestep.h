@@ -9,7 +9,7 @@ namespace SLEngine {
             : m_Time(time)
         {
         }
-        // 重载类型转换运算符
+
         operator float() const { return m_Time; }
 
         float GetSeconds() const { return m_Time; }

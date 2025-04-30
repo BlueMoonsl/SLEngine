@@ -137,6 +137,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Sandbox2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Sandbox2D.cpp">
+      <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="src\SandboxApp.cpp">
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
