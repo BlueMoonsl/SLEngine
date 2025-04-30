@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SLEngine/Input.h"
+#include "SLEngine/Core/Input.h"
 
 namespace SLEngine {
 

@@ -1,8 +1,8 @@
 #include "slpch.h"
 #include "OrthographicCameraController.h"
 
-#include "SLEngine/Input.h"
-#include "SLEngine/KeyCodes.h"
+#include "SLEngine/Core/Input.h"
+#include "SLEngine/Core/KeyCodes.h"
 
 namespace SLEngine {
 
@@ -14,14 +14,26 @@ namespace SLEngine {
     void OrthographicCameraController::OnUpdate(Timestep ts)
     {
         if (Input::IsKeyPressed(SL_KEY_A))
-            m_CameraPosition.x -= m_CameraTranslationSpeed * ts;
+        {
+            m_CameraPosition.x -= cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
+            m_CameraPosition.y -= sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
+        }
         else if (Input::IsKeyPressed(SL_KEY_D))
-            m_CameraPosition.x += m_CameraTranslationSpeed * ts;
+        {
+            m_CameraPosition.x += cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
+            m_CameraPosition.y += sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
+        }
 
         if (Input::IsKeyPressed(SL_KEY_W))
-            m_CameraPosition.y += m_CameraTranslationSpeed * ts;
+        {
+            m_CameraPosition.x += -sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
+            m_CameraPosition.y += cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
+        }
         else if (Input::IsKeyPressed(SL_KEY_S))
-            m_CameraPosition.y -= m_CameraTranslationSpeed * ts;
+        {
+            m_CameraPosition.x -= -sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
+            m_CameraPosition.y -= cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
+        }
 
         if (m_Rotation)
         {
@@ -29,6 +41,11 @@ namespace SLEngine {
                 m_CameraRotation += m_CameraRotationSpeed * ts;
             if (Input::IsKeyPressed(SL_KEY_E))
                 m_CameraRotation -= m_CameraRotationSpeed * ts;
+
+            if (m_CameraRotation > 180.0f)
+                m_CameraRotation -= 360.0f;
+            else if (m_CameraRotation <= -180.0f)
+                m_CameraRotation += 360.0f;
 
             m_Camera.SetRotation(m_CameraRotation);
         }
@@ -41,8 +58,8 @@ namespace SLEngine {
     void OrthographicCameraController::OnEvent(Event& e)
     {
         EventDispatcher dispatcher(e);
-        dispatcher.Dispatch<MouseScrolledEvent>(HZ_BIND_EVENT_FN(OrthographicCameraController::OnMouseScrolled));
-        dispatcher.Dispatch<WindowResizeEvent>(HZ_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
+        dispatcher.Dispatch<MouseScrolledEvent>(SL_BIND_EVENT_FN(OrthographicCameraController::OnMouseScrolled));
+        dispatcher.Dispatch<WindowResizeEvent>(SL_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
     }
 
     bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)

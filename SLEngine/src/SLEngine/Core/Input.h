@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SLEngine/Core.h"
+#include "SLEngine/Core/Core.h"
 
 namespace SLEngine {
 	class SLENGINE_API Input {
@@ -22,6 +22,6 @@ namespace SLEngine {
 		virtual float GetMouseXImpl() = 0;
 		virtual float GetMouseYImpl() = 0;
 	private:
-		static Input* s_Instance;// 声明静态单例全局对象
+		static Scope<Input> s_Instance;// 声明静态单例全局对象
 	};
 }

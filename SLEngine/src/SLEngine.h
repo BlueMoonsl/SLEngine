@@ -2,14 +2,14 @@
 
 // For use by SLEngine applications
 
-#include "SLEngine/Application.h"
-#include "SLEngine/Layer.h"
-#include "SLEngine/Log.h"
+#include "SLEngine/Core/Application.h"
+#include "SLEngine/Core/Layer.h"
+#include "SLEngine/Core/Log.h"
 
-#include "SLEngine/Input.h"
-#include "SLEngine/KeyCodes.h"
-#include "SLEngine/MouseButtonCodes.h"
-#include "SLEngine/OrthographicCameraController.h"
+#include "SLEngine/Core/Input.h"
+#include "SLEngine/Core/KeyCodes.h"
+#include "SLEngine/Core/MouseButtonCodes.h"
+#include "SLEngine/Renderer/OrthographicCameraController.h"
 
 #include "SLEngine/ImGui/ImGuiLayer.h"
 
@@ -26,5 +26,5 @@
 // -----------------------------------
 
 // ------------ Entry Point-------------
-#include "SLEngine/EntryPoint.h"
+#include "SLEngine/Core/EntryPoint.h"
 //----------------------------------------

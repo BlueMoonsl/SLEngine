@@ -1,12 +1,12 @@
 #include "slpch.h"
 #include "WindowsInput.h"
-#include "SLEngine/Application.h"
+#include "SLEngine/Core/Application.h"
 
 #include <GLFW/glfw3.h>
 
 namespace SLEngine {
 	// 父类指针指向子类对象
-	Input* Input::s_Instance = new WindowsInput();// 定义静态单例全局对象
+	Scope<Input> Input::s_Instance = CreateScope<WindowsInput>();// 定义静态单例全局对象
 	bool WindowsInput::IsKeyPressedImpl(int keycode) {
 		// 获取GLFW原生窗口void*，转为GLFWwindow*
 		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());

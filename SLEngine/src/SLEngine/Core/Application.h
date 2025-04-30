@@ -3,8 +3,8 @@
 #include "core.h"
 #include "Window.h"
 #include "LayerStack.h"
-#include "Events/Event.h"
-#include "Events/ApplicationEvent.h"
+#include "SLEngine/Events/Event.h"
+#include "SLEngine/Events/ApplicationEvent.h"
 
 #include "SLEngine/Core/Timestep.h"
 #include "SLEngine/ImGui/ImGuiLayer.h"

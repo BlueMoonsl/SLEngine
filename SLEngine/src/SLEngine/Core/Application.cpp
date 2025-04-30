@@ -1,7 +1,7 @@
 #include "slpch.h"
 #include "Application.h"
 
-#include "SLEngine/Log.h"
+#include "SLEngine/Core/Log.h"
 #include "SLEngine/Renderer/Renderer.h"
 
 #include "Input.h"

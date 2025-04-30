@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SLEngine/Core.h"
+#include "SLEngine/Core/Core.h"
 #include "SLEngine/Core/Timestep.h"
 #include "SLEngine/Events/Event.h"
 

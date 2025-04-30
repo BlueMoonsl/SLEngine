@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "SLEngine/Core.h"
+#include "SLEngine/Core/Core.h"
 
 namespace SLEngine {
 
