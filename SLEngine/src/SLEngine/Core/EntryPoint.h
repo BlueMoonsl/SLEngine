@@ -1,5 +1,7 @@
 #pragma once
 
+#include "SLEngine/Core/Core.h"
+
 #ifdef SL_PLATFORM_WINDOWS
 
 extern SLEngine::Application* SLEngine::CreateApplication();

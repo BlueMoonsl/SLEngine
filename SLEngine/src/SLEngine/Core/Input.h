@@ -3,7 +3,7 @@
 #include "SLEngine/Core/Core.h"
 
 namespace SLEngine {
-	class SLENGINE_API Input {
+	class Input {
 	protected:
 		Input() = default;
 	public:

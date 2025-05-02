@@ -1,16 +1,16 @@
 #pragma once
 
 #include "SLEngine/Core/Core.h"
-#include "Layer.h"
+#include "SLEngine/Core/Layer.h"
 
 #include <vector>
 
 namespace SLEngine {
 
-    class SLENGINE_API LayerStack
+    class LayerStack
     {
     public:
-        LayerStack();
+        LayerStack() = default;
         ~LayerStack();
 
         void PushLayer(Layer* layer);

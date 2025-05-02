@@ -1,7 +1,6 @@
 #include "slpch.h"
-#include "Shader.h"
-
-#include "Renderer.h"
+#include "SLEngine/Renderer/Shader.h"
+#include "SLEngine/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
 namespace SLEngine {
@@ -11,7 +10,7 @@ namespace SLEngine {
         switch (Renderer::GetAPI())
         {
             case RendererAPI::API::None:    SL_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-            case RendererAPI::API::OpenGL:  return std::make_shared<OpenGLShader>(filepath);
+            case RendererAPI::API::OpenGL:  return CreateRef<OpenGLShader>(filepath);
         }
 
         SL_CORE_ASSERT(false, "Unknown RendererAPI!");
@@ -23,7 +22,7 @@ namespace SLEngine {
         switch (Renderer::GetAPI())
         {
             case RendererAPI::API::None:    SL_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-            case RendererAPI::API::OpenGL:  return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
+            case RendererAPI::API::OpenGL:  return CreateRef<OpenGLShader>(name, vertexSrc, fragmentSrc);
         }
 
         SL_CORE_ASSERT(false, "Unknown RendererAPI!");

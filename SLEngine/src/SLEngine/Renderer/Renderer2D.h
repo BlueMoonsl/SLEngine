@@ -1,8 +1,7 @@
 #pragma once
 
-#include "OrthographicCamera.h"
-
-#include "Texture.h"
+#include "SLEngine/Renderer/OrthographicCamera.h"
+#include "SLEngine/Renderer/Texture.h"
 
 namespace SLEngine {
 

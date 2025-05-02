@@ -649,6 +649,9 @@
     <ClCompile Include="src\SLEngine\Renderer\Buffer.cpp">
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="src\SLEngine\Renderer\GraphicsContext.cpp">
+      <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\OrthographicCamera.cpp">
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>

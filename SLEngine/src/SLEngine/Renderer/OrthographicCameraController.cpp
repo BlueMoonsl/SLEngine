@@ -1,5 +1,5 @@
 #include "slpch.h"
-#include "OrthographicCameraController.h"
+#include "SLEngine/Renderer/OrthographicCameraController.h"
 
 #include "SLEngine/Core/Input.h"
 #include "SLEngine/Core/KeyCodes.h"

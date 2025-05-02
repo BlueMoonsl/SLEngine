@@ -1,8 +1,7 @@
 #include <SLEngine.h>
 #include <SLEngine/Core/EntryPoint.h>
 
-#include "imgui/imgui.h"
-#include "Platform/OpenGL/OpenGLShader.h"
+#include <imgui/imgui.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -23,8 +22,7 @@ public:
              0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
         };
 
-        SLEngine::Ref<SLEngine::VertexBuffer> vertexBuffer;
-        vertexBuffer.reset(SLEngine::VertexBuffer::Create(vertices, sizeof(vertices)));
+        SLEngine::Ref<SLEngine::VertexBuffer> vertexBuffer = SLEngine::VertexBuffer::Create(vertices, sizeof(vertices));
         SLEngine::BufferLayout layout = {
             { SLEngine::ShaderDataType::Float3, "a_Position" },
             { SLEngine::ShaderDataType::Float4, "a_Color" }
@@ -33,8 +31,7 @@ public:
         m_VertexArray->AddVertexBuffer(vertexBuffer);
 
         uint32_t indices[3] = { 0, 1, 2 };
-        SLEngine::Ref<SLEngine::IndexBuffer> indexBuffer;
-        indexBuffer.reset(SLEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+        SLEngine::Ref<SLEngine::IndexBuffer> indexBuffer = SLEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
         m_VertexArray->SetIndexBuffer(indexBuffer);
 
         m_SquareVA = SLEngine::VertexArray::Create();
@@ -46,8 +43,7 @@ public:
             -0.5f,  0.5f, 0.0f, 0.0f, 1.0f
         };
 
-        SLEngine::Ref<SLEngine::VertexBuffer> squareVB;
-        squareVB.reset(SLEngine::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+        SLEngine::Ref<SLEngine::VertexBuffer> squareVB = SLEngine::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
         squareVB->SetLayout({
             { SLEngine::ShaderDataType::Float3, "a_Position" },
             { SLEngine::ShaderDataType::Float2, "a_TexCoord" }
@@ -55,8 +51,7 @@ public:
         m_SquareVA->AddVertexBuffer(squareVB);
 
         uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-        SLEngine::Ref<SLEngine::IndexBuffer> squareIB;
-        squareIB.reset(SLEngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+        SLEngine::Ref<SLEngine::IndexBuffer> squareIB = SLEngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
         m_SquareVA->SetIndexBuffer(squareIB);
 
         std::string vertexSrc = R"(
@@ -135,8 +130,8 @@ public:
         m_Texture = SLEngine::Texture2D::Create("assets/textures/Checkerboard.png");
         m_ChernoLogoTexture = SLEngine::Texture2D::Create("assets/textures/ChernoLogo.png");
 
-        std::dynamic_pointer_cast<SLEngine::OpenGLShader>(textureShader)->Bind();
-        std::dynamic_pointer_cast<SLEngine::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
+        textureShader->Bind();
+        textureShader->SetInt("u_Texture", 0);
     }
 
     void OnUpdate(SLEngine::Timestep ts) override
@@ -152,8 +147,8 @@ public:
         
         glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-        std::dynamic_pointer_cast<SLEngine::OpenGLShader>(m_FlatColorShader)->Bind();
-        std::dynamic_pointer_cast<SLEngine::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+        m_FlatColorShader->Bind();
+        m_FlatColorShader->SetFloat3("u_Color", m_SquareColor);
 
         for (int y = 0; y < 20; y++)
         {

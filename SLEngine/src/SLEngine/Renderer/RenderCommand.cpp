@@ -1,10 +1,8 @@
 #include "slpch.h"
-#include "RenderCommand.h"
-
-#include "Platform/OpenGL/OpenGLRendererAPI.h"
+#include "SLEngine/Renderer/RenderCommand.h"
 
 namespace SLEngine {
 
-    Scope<RendererAPI> RenderCommand::s_RendererAPI = CreateScope<OpenGLRendererAPI>();
+    Scope<RendererAPI> RenderCommand::s_RendererAPI = RendererAPI::Create();
 
 }

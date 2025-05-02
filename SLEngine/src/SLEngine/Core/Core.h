@@ -44,22 +44,6 @@
 #endif // End of platform detection
 
 
-// DLL support
-#ifdef SL_PLATFORM_WINDOWS
-#if SL_DYNAMIC_LINK
-		#ifdef SL_BUILD_DLL
-			#define SLENGINE_API __declspec(dllexport)
-		#else
-			#define SLENGINE_API __declspec(dllimport)
-		#endif
-	#else
-		#define SLENGINE_API
-	#endif
-#else
-	#error SLEngine only supports Windows!
-#endif // End of DLL support
-
-
 #ifdef SL_DEBUG
 	#define SL_ENABLE_ASSERTS
 #endif

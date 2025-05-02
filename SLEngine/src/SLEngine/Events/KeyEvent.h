@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Event.h"
+#include "SLEngine/Events/Event.h"
 
 namespace SLEngine {
 
-	class SLENGINE_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -17,7 +17,7 @@ namespace SLEngine {
 		int m_KeyCode;
 	};
 
-	class SLENGINE_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
@@ -38,7 +38,7 @@ namespace SLEngine {
 		int m_RepeatCount;
 	};
 
-	class SLENGINE_API KeyReleasedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keycode)
@@ -55,7 +55,7 @@ namespace SLEngine {
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
-	class SLENGINE_API KeyTypedEvent : public KeyEvent
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
 		KeyTypedEvent(int keycode)

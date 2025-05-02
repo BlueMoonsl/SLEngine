@@ -1,7 +1,7 @@
 #pragma once
 
-#include "core.h"
-#include "Window.h"
+#include "SLEngine/Core/Core.h"
+#include "SLEngine/Core/Window.h"
 #include "LayerStack.h"
 #include "SLEngine/Events/Event.h"
 #include "SLEngine/Events/ApplicationEvent.h"

@@ -1,12 +1,13 @@
 #pragma once
 
-#include "core.h"
-#include "spdlog/spdlog.h"
-#include "spdlog/fmt/ostr.h"
+#include "SLEngine/Core/Core.h"
+
+#include <spdlog/spdlog.h>
+#include <spdlog/fmt/ostr.h>
 
 namespace SLEngine
 {
-	class SLENGINE_API Log
+	class Log
 	{
 	public:
 		static void Init();

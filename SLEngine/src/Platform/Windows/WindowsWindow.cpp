@@ -1,5 +1,5 @@
 #include "slpch.h"
-#include "WindowsWindow.h"
+#include "Platform/Windows/WindowsWindow.h"
 
 #include "SLEngine/Events/ApplicationEvent.h"
 #include "SLEngine/Events/KeyEvent.h"
@@ -16,8 +16,8 @@ namespace SLEngine {
     }
 
     // 静态函数在这里直接创建Windows平台的窗口
-    Window* Window::Create(const WindowProps& props) {
-        return new WindowsWindow(props);
+    Scope<Window> Window::Create(const WindowProps& props) {
+        return CreateScope<WindowsWindow>(props);
     }
 
     WindowsWindow::WindowsWindow(const WindowProps& props) {
@@ -37,7 +37,6 @@ namespace SLEngine {
 
         // 只有初次创建窗口才初始化
         if (s_GLFWWindowCount == 0) {
-            SL_CORE_INFO("Initializing GLFW");
             int success = glfwInit();
             SL_CORE_ASSERT(success, "Could not initialize GLFW!");
 
@@ -47,7 +46,7 @@ namespace SLEngine {
         m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
         ++s_GLFWWindowCount;
 
-        m_Context = CreateScope<OpenGLContext>(m_Window);
+        m_Context = GraphicsContext::Create(m_Window);
         m_Context->Init();
 
         glfwSetWindowUserPointer(m_Window, &m_Data);
@@ -146,10 +145,10 @@ namespace SLEngine {
 
     void WindowsWindow::Shutdown() {
         glfwDestroyWindow(m_Window);
+        --s_GLFWWindowCount;
 
-        if (--s_GLFWWindowCount == 0)
+        if (s_GLFWWindowCount == 0)
         {
-            SL_CORE_INFO("Terminating GLFW");
             glfwTerminate();
         }
     }

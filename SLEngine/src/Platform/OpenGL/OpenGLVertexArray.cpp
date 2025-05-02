@@ -1,5 +1,5 @@
 #include "slpch.h"
-#include "OpenGLVertexArray.h"
+#include "Platform/OpenGL/OpenGLVertexArray.h"
 
 #include <glad/glad.h>
 
@@ -8,18 +8,18 @@ namespace SLEngine {
     static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
     {
         switch (type)
-        {
-        case SLEngine::ShaderDataType::Float:    return GL_FLOAT;
-        case SLEngine::ShaderDataType::Float2:   return GL_FLOAT;
-        case SLEngine::ShaderDataType::Float3:   return GL_FLOAT;
-        case SLEngine::ShaderDataType::Float4:   return GL_FLOAT;
-        case SLEngine::ShaderDataType::Mat3:     return GL_FLOAT;
-        case SLEngine::ShaderDataType::Mat4:     return GL_FLOAT;
-        case SLEngine::ShaderDataType::Int:      return GL_INT;
-        case SLEngine::ShaderDataType::Int2:     return GL_INT;
-        case SLEngine::ShaderDataType::Int3:     return GL_INT;
-        case SLEngine::ShaderDataType::Int4:     return GL_INT;
-        case SLEngine::ShaderDataType::Bool:     return GL_BOOL;
+        { 
+        case::SLEngine::ShaderDataType::Float:    return GL_FLOAT;
+        case::SLEngine::ShaderDataType::Float2:   return GL_FLOAT;
+        case::SLEngine::ShaderDataType::Float3:   return GL_FLOAT;
+        case::SLEngine::ShaderDataType::Float4:   return GL_FLOAT;
+        case::SLEngine::ShaderDataType::Mat3:     return GL_FLOAT;
+        case::SLEngine::ShaderDataType::Mat4:     return GL_FLOAT;
+        case::SLEngine::ShaderDataType::Int:      return GL_INT;
+        case::SLEngine::ShaderDataType::Int2:     return GL_INT;
+        case::SLEngine::ShaderDataType::Int3:     return GL_INT;
+        case::SLEngine::ShaderDataType::Int4:     return GL_INT;
+        case::SLEngine::ShaderDataType::Bool:     return GL_BOOL;
         }
 
         SL_CORE_ASSERT(false, "Unknown ShaderDataType!");

@@ -1,7 +1,6 @@
 #include "slpch.h"
-#include "Texture.h"
-
-#include "Renderer.h"
+#include "SLEngine/Renderer/Texture.h"
+#include "SLEngine/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 namespace SLEngine {

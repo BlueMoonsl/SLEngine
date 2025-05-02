@@ -1,9 +1,8 @@
 #include "slpch.h"
-#include "Renderer2D.h"
-
-#include "VertexArray.h"
-#include "Shader.h"
-#include "RenderCommand.h"
+#include "SLEngine/Renderer/Renderer2D.h"
+#include "SLEngine/Renderer/VertexArray.h"
+#include "SLEngine/Renderer/Shader.h"
+#include "SLEngine/Renderer/RenderCommand.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -30,8 +29,7 @@ namespace SLEngine {
             -0.5f,  0.5f, 0.0f, 0.0f, 1.0f
         };
 
-        Ref<VertexBuffer> squareVB;
-        squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+        Ref<VertexBuffer> squareVB = VertexBuffer::Create(squareVertices, sizeof(squareVertices));
             squareVB->SetLayout({
                 { ShaderDataType::Float3, "a_Position" },
                 { ShaderDataType::Float2, "a_TexCoord" }
@@ -39,9 +37,8 @@ namespace SLEngine {
         s_Data->QuadVertexArray->AddVertexBuffer(squareVB);
 
         uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-        Ref<IndexBuffer> squareIB;
-        squareIB.reset(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-            s_Data->QuadVertexArray->SetIndexBuffer(squareIB);
+        Ref<IndexBuffer> squareIB = IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
+        s_Data->QuadVertexArray->SetIndexBuffer(squareIB);
 
         s_Data->WhiteTexture = Texture2D::Create(1, 1);
         uint32_t whiteTextureData = 0xffffffff;
