@@ -8,6 +8,8 @@ namespace SLEngine {
 
     void Renderer::Init()
     {
+        SL_PROFILE_FUNCTION();
+
         RenderCommand::Init();
         Renderer2D::Init();
     }

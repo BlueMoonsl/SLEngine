@@ -11,21 +11,21 @@ Sandbox2D::Sandbox2D()
 
 void Sandbox2D::OnAttach()
 {
+    SL_PROFILE_FUNCTION();
+
     m_CheckerboardTexture = SLEngine::Texture2D::Create("assets/textures/Checkerboard.png");
 }
 
 void Sandbox2D::OnDetach()
 {
+    SL_PROFILE_FUNCTION();
 }
 
 void Sandbox2D::OnUpdate(SLEngine::Timestep ts)
 {
     SL_PROFILE_FUNCTION();
     // Update
-    {
-        SL_PROFILE_SCOPE("CameraController::OnUpdate");
-        m_CameraController.OnUpdate(ts);
-    }
+    m_CameraController.OnUpdate(ts);
 
     // Render
     {

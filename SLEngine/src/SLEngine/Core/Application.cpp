@@ -15,6 +15,8 @@ namespace SLEngine
 
 	Application::Application()
 	{
+		SL_PROFILE_FUNCTION();
+
 		SL_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
@@ -29,23 +31,31 @@ namespace SLEngine
 
 	Application::~Application()
 	{
+		SL_PROFILE_FUNCTION();
+
 		Renderer::Shutdown();
 	}
 
 	void Application::PushLayer(Layer* layer)
 	{
+		SL_PROFILE_FUNCTION();
+
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
+		SL_PROFILE_FUNCTION();
+
 		m_LayerStack.PushOverlay(layer);
 		layer->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
 	{
+		SL_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(SL_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(SL_BIND_EVENT_FN(Application::OnWindowResize));
@@ -60,6 +70,8 @@ namespace SLEngine
 
 	void Application::Run()
 	{
+		SL_PROFILE_FUNCTION();
+
 		WindowResizeEvent e(1280, 720);
 		if (e.IsInCategory(EventCategoryApplication)) {
 			SL_TRACE(e.ToString());
@@ -70,6 +82,8 @@ namespace SLEngine
 
 		while (m_Running)
 		{
+			SL_PROFILE_SCOPE("RunLoop");
+
 			float time = (float)glfwGetTime();
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
@@ -77,14 +91,22 @@ namespace SLEngine
 			// 窗口消失后不再进行渲染
 			if (!m_Minimized)
 			{
-				for (Layer* layer : m_LayerStack)
-					layer->OnUpdate(timestep);
-			}
+				{
+					SL_PROFILE_SCOPE("LayerStack OnUpdate");
 
-			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
-			m_ImGuiLayer->End();
+					for (Layer* layer : m_LayerStack)
+						layer->OnUpdate(timestep);
+				}
+
+				m_ImGuiLayer->Begin();
+				{
+					SL_PROFILE_SCOPE("LayerStack OnImGuiRender");
+
+					for (Layer* layer : m_LayerStack)
+						layer->OnImGuiRender();
+				}
+				m_ImGuiLayer->End();
+			}
 
 			m_Window->OnUpdate();
 		}
@@ -98,6 +120,8 @@ namespace SLEngine
 
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+		SL_PROFILE_FUNCTION();
+
 		if (e.GetWidth() == 0 || e.GetHeight() == 0)
 		{
 			m_Minimized = true;

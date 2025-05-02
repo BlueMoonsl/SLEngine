@@ -21,14 +21,20 @@ namespace SLEngine {
     }
 
     WindowsWindow::WindowsWindow(const WindowProps& props) {
+        SL_PROFILE_FUNCTION();
+
         Init(props);
     }
 
     WindowsWindow::~WindowsWindow() {
+        SL_PROFILE_FUNCTION();
+
         Shutdown();
     }
 
     void WindowsWindow::Init(const WindowProps& props) {
+        SL_PROFILE_FUNCTION();
+
         m_Data.Title = props.Title;
         m_Data.Width = props.Width;
         m_Data.Height = props.Height;
@@ -37,14 +43,19 @@ namespace SLEngine {
 
         // 只有初次创建窗口才初始化
         if (s_GLFWWindowCount == 0) {
+            SL_PROFILE_SCOPE("glfwInit");
+
             int success = glfwInit();
             SL_CORE_ASSERT(success, "Could not initialize GLFW!");
 
             glfwSetErrorCallback(GLFWErrorCallback);
         }
 
-        m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-        ++s_GLFWWindowCount;
+        {
+            SL_PROFILE_SCOPE("glfwCreateWindow");
+            m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+            ++s_GLFWWindowCount;
+        }
 
         m_Context = GraphicsContext::Create(m_Window);
         m_Context->Init();
@@ -144,6 +155,8 @@ namespace SLEngine {
     }
 
     void WindowsWindow::Shutdown() {
+        SL_PROFILE_FUNCTION();
+
         glfwDestroyWindow(m_Window);
         --s_GLFWWindowCount;
 
@@ -154,11 +167,15 @@ namespace SLEngine {
     }
 
     void WindowsWindow::OnUpdate() {
+        SL_PROFILE_FUNCTION();
+
         glfwPollEvents();
         m_Context->SwapBuffers();
     }
 
     void WindowsWindow::SetVSync(bool enabled) {
+        SL_PROFILE_FUNCTION();
+
         if (enabled) {
             glfwSwapInterval(1);
         }

@@ -15,6 +15,8 @@ namespace SLEngine {
 
     void OpenGLContext::Init()
     {
+        SL_PROFILE_FUNCTION();
+
         // 将我们窗口的上下文设置为当前线程的主上下文
         glfwMakeContextCurrent(m_WindowHandle);
         // 获取显卡OpenGL函数定义的地址
@@ -38,6 +40,8 @@ namespace SLEngine {
 
     void OpenGLContext::SwapBuffers()
     {
+        SL_PROFILE_FUNCTION();
+
         glfwSwapBuffers(m_WindowHandle);
     }
 
