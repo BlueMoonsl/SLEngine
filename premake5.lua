@@ -1,5 +1,7 @@
 workspace "SLEngine"	
-	architecture "x64"	
+	architecture "x86_64"	
+	startproject "Sandbox"
+	
 	configurations{
 		"Debug",
 		"Release",
@@ -8,8 +10,6 @@ workspace "SLEngine"
 
 	filter "files:**.cpp"
         buildoptions { "-utf-8" }
-
-	startproject "Sandbox"
 
 	flags
  	{

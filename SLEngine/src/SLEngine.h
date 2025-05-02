@@ -9,7 +9,7 @@
 
 #include "SLEngine/Core/Input.h"
 #include "SLEngine/Core/KeyCodes.h"
-#include "SLEngine/Core/MouseButtonCodes.h"
+#include "SLEngine/Core/MouseCodes.h"
 #include "SLEngine/Renderer/OrthographicCameraController.h"
 
 #include "SLEngine/ImGui/ImGuiLayer.h"

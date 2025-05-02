@@ -19,6 +19,9 @@
     <Filter Include="src\SLEngine\Core">
       <UniqueIdentifier>{49DD719E-B5F3-6F34-FE6A-FB556AC040BC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\SLEngine\Debug">
+      <UniqueIdentifier>{87E1B96C-73C5-7AC2-DC25-7515C8286544}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\SLEngine\Events">
       <UniqueIdentifier>{15658007-81C6-5D15-0A34-A4C7769494D4}</UniqueIdentifier>
     </Filter>
@@ -105,7 +108,7 @@
     <ClInclude Include="src\SLEngine\Core\Log.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\SLEngine\Core\MouseButtonCodes.h">
+    <ClInclude Include="src\SLEngine\Core\MouseCodes.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Core\Timestep.h">
@@ -113,6 +116,9 @@
     </ClInclude>
     <ClInclude Include="src\SLEngine\Core\Window.h">
       <Filter>src\SLEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Debug\Instrumentor.h">
+      <Filter>src\SLEngine\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Events\ApplicationEvent.h">
       <Filter>src\SLEngine\Events</Filter>
@@ -1422,7 +1428,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\SLEngine\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1452,6 +1457,9 @@
     <ClCompile Include="src\SLEngine\Core\Application.cpp">
       <Filter>src\SLEngine\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\SLEngine\Core\Input.cpp">
+      <Filter>src\SLEngine\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\SLEngine\Core\Layer.cpp">
       <Filter>src\SLEngine\Core</Filter>
     </ClCompile>
@@ -1459,6 +1467,9 @@
       <Filter>src\SLEngine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Core\Log.cpp">
+      <Filter>src\SLEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Core\Window.cpp">
       <Filter>src\SLEngine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\ImGui\ImGuiBuild.cpp">

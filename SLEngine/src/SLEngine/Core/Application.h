@@ -9,6 +9,8 @@
 #include "SLEngine/Core/Timestep.h"
 #include "SLEngine/ImGui/ImGuiLayer.h"
 
+int main(int argc, char** argv);
+
 namespace SLEngine
 {
 	class Application
@@ -17,7 +19,6 @@ namespace SLEngine
 		Application();
 		virtual ~Application();
 
-		void Run();
 		void OnEvent(Event& e);
 
 		void PushLayer(Layer* layer);
@@ -27,6 +28,7 @@ namespace SLEngine
 
 		inline static Application& Get() { return *s_Instance; }
 	private:
+		void Run();
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 	private:
@@ -39,6 +41,7 @@ namespace SLEngine
 		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
+		friend int ::main(int argc, char** argv);
 	};
 
 	Application* CreateApplication();
