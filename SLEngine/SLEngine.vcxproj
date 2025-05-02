@@ -166,6 +166,7 @@
     <ClInclude Include="src\SLEngine\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\SLEngine\Core\Timestep.h" />
     <ClInclude Include="src\SLEngine\Core\Window.h" />
+    <ClInclude Include="src\SLEngine\Debug\Instrumentor.h" />
     <ClInclude Include="src\SLEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\SLEngine\Events\Event.h" />
     <ClInclude Include="src\SLEngine\Events\KeyEvent.h" />

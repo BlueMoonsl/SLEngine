@@ -10,11 +10,18 @@ int main(int argc, char** argv)
 {
 	
 	SLEngine::Log::Init();
-	SL_CORE_WARN("Initialized Log!");
 
-	auto app = SLEngine::CreateApplication();
-	app->Run();
-	delete app;
+    SL_PROFILE_BEGIN_SESSION("Startup", "SLEngineProfile-Startup.json");
+    auto app = SLEngine::CreateApplication();
+    SL_PROFILE_END_SESSION();
+
+    SL_PROFILE_BEGIN_SESSION("Runtime", "SLEngineProfile-Runtime.json");
+    app->Run();
+    SL_PROFILE_END_SESSION();
+
+    SL_PROFILE_BEGIN_SESSION("Startup", "SLEngineProfile-Shutdown.json");
+    delete app;
+    SL_PROFILE_END_SESSION();
 }
 
 #endif
