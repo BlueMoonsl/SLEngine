@@ -15,6 +15,7 @@
 
 // ---Renderer------------------------
 #include "SLEngine/Renderer/Renderer.h"
+#include "SLEngine/Renderer/Renderer2D.h"
 #include "SLEngine/Renderer/RenderCommand.h"
 		  
 #include "SLEngine/Renderer/Buffer.h"

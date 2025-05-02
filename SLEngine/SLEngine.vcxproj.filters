@@ -147,6 +147,9 @@
     <ClInclude Include="src\SLEngine\Renderer\Renderer.h">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\Renderer\Renderer2D.h">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\SLEngine\Renderer\RendererAPI.h">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
@@ -1476,6 +1479,9 @@
       <Filter>src\SLEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\Renderer.cpp">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Renderer\Renderer2D.cpp">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\RendererAPI.cpp">
