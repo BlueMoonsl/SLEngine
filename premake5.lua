@@ -147,3 +147,54 @@ project "Sandbox"
 		buildoptions "/MD"
 		--runtime "Release"
 		optimize "on"
+
+
+project "Editor"
+	location "Editor"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"SLEngine/vendor/spdlog/include",
+		"SLEngine/src",
+		"SLEngine/vendor",
+		"%{IncludeDir.glm}"
+	}
+
+	links
+	{
+		"SLEngine"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+		
+	filter "configurations:Debug"
+		defines "SL_DEBUG"
+		buildoptions "/MDd"
+		--runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		defines "SL_RELEASE"
+		buildoptions "/MD"
+		--runtime "Release"
+		optimize "on"
+
+	filter "configurations:Dist"
+		defines "SL_DIST"
+		buildoptions "/MD"
+		--runtime "Release"
+		optimize "on"
