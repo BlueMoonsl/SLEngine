@@ -1,7 +1,7 @@
 #pragma once
 
 #include "slpch.h"
-#include "SLEngine/Core/core.h"
+#include "SLEngine/Core/Base.h"
 
 namespace SLEngine {
 

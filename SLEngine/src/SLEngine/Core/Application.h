@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SLEngine/Core/Core.h"
+#include "SLEngine/Core/Base.h"
 #include "SLEngine/Core/Window.h"
 #include "LayerStack.h"
 #include "SLEngine/Events/Event.h"
@@ -25,6 +25,8 @@ namespace SLEngine
 		void PushOverlay(Layer* layer);
 
 		Window& GetWindow() { return *m_Window; }
+
+		void Close();
 
 		static Application& Get() { return *s_Instance; }
 	private:

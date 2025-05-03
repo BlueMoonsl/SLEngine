@@ -6,7 +6,7 @@
 
 #include "SLEngine/Core/Input.h"
 
-#include <glfw/glfw3.h>
+#include <GLFW/glfw3.h>
 
 namespace SLEngine
 {
@@ -52,6 +52,11 @@ namespace SLEngine
 		layer->OnAttach();
 	}
 
+	void Application::Close()
+	{
+		m_Running = false;
+	}
+
 	void Application::OnEvent(Event& e)
 	{
 		SL_PROFILE_FUNCTION();
@@ -62,9 +67,9 @@ namespace SLEngine
 
 		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
 		{
-			(*it)->OnEvent(e);
 			if (e.Handled)
 				break;
+			(*it)->OnEvent(e);
 		}
 	}
 

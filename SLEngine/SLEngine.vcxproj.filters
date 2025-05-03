@@ -87,7 +87,7 @@
     <ClInclude Include="src\SLEngine\Core\Application.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\SLEngine\Core\Core.h">
+    <ClInclude Include="src\SLEngine\Core\Base.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Core\EntryPoint.h">

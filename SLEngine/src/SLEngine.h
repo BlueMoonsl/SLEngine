@@ -2,7 +2,7 @@
 
 // For use by SLEngine applications
 
-#include "SLEngine/Core/Core.h"
+#include "SLEngine/Core/Base.h"
 #include "SLEngine/Core/Application.h"
 #include "SLEngine/Core/Layer.h"
 #include "SLEngine/Core/Log.h"
