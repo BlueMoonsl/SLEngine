@@ -5,23 +5,23 @@
 
 namespace SLEngine {
 
-    class HazelEditor : public Application
+    class Editor : public Application
     {
     public:
-        HazelEditor()
-            : Application("Hazel Editor")
+        Editor()
+            : Application("SLEngine Editor")
         {
             PushLayer(new EditorLayer());
         }
 
-        ~HazelEditor()
+        ~Editor()
         {
         }
     };
 
     Application* CreateApplication()
     {
-        return new HazelEditor();
+        return new Editor();
     }
 
 }

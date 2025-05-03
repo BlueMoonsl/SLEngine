@@ -15,7 +15,7 @@ namespace SLEngine {
         return CreateScope<WindowsInput>();
 #else
         SL_CORE_ASSERT(false, "Unknown platform!");
-        return nullptr; 3Has comments.Original line has comments.
+        return nullptr;
 #endif
     }
 }

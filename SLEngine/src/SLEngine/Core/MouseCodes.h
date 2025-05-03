@@ -38,4 +38,4 @@ namespace SLEngine
 #define SL_MOUSE_BUTTON_LAST   ::SLEngine::Mouse::ButtonLast
 #define SL_MOUSE_BUTTON_LEFT   ::SLEngine::Mouse::ButtonLeft
 #define SL_MOUSE_BUTTON_RIGHT  ::SLEngine::Mouse::ButtonRight
-#define SL_MOUSE_BUTTON_MIDDLE ::SLEngine::Mouse::ButtonMiddle3
+#define SL_MOUSE_BUTTON_MIDDLE ::SLEngine::Mouse::ButtonMiddle
