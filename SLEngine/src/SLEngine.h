@@ -21,6 +21,7 @@
 		  
 #include "SLEngine/Renderer/Buffer.h"
 #include "SLEngine/Renderer/Shader.h"
+#include "SLEngine/Renderer/Framebuffer.h"
 #include "SLEngine/Renderer/Texture.h"
 #include "SLEngine/Renderer/VertexArray.h"
 		  
