@@ -188,6 +188,7 @@
     <ClInclude Include="src\SLEngine\Scene\Components.h" />
     <ClInclude Include="src\SLEngine\Scene\Entity.h" />
     <ClInclude Include="src\SLEngine\Scene\Scene.h" />
+    <ClInclude Include="src\SLEngine\Scene\SceneCamera.h" />
     <ClInclude Include="src\slpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -698,6 +699,9 @@
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Scene\Scene.cpp">
+      <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Scene\SceneCamera.cpp">
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\slpch.cpp">

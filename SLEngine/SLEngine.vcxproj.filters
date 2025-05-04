@@ -141,6 +141,9 @@
     <ClInclude Include="src\SLEngine\Renderer\Buffer.h">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\Renderer\Camera.h">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\SLEngine\Renderer\Framebuffer.h">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
@@ -181,6 +184,9 @@
       <Filter>src\SLEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Scene\Scene.h">
+      <Filter>src\SLEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Scene\SceneCamera.h">
       <Filter>src\SLEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\slpch.h">
@@ -1443,7 +1449,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\SLEngine\Renderer\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1534,6 +1539,9 @@
       <Filter>src\SLEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Scene\Scene.cpp">
+      <Filter>src\SLEngine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Scene\SceneCamera.cpp">
       <Filter>src\SLEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\slpch.cpp">
