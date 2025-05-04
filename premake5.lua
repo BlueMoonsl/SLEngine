@@ -24,6 +24,7 @@ IncludeDir["Glad"] = "SLEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "SLEngine/vendor/imgui"
 IncludeDir["glm"] = "SLEngine/vendor/glm"
 IncludeDir["stb_image"] = "SLEngine/vendor/stb_image"
+IncludeDir["entt"] = "SLEngine/vendor/entt/include"
 
 include "SLEngine/vendor/GLFW"
 include "SLEngine/vendor/Glad"
@@ -63,7 +64,8 @@ project "SLEngine"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
- 		"%{IncludeDir.stb_image}"
+ 		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 	}
 	links { 
 		"GLFW",
@@ -170,7 +172,8 @@ project "Editor"
 		"SLEngine/vendor/spdlog/include",
 		"SLEngine/src",
 		"SLEngine/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links

@@ -31,6 +31,9 @@
     <Filter Include="src\SLEngine\Renderer">
       <UniqueIdentifier>{170D29E0-8379-E4DA-4C6D-7C38B8980643}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\SLEngine\Scene">
+      <UniqueIdentifier>{2E44C86D-1A28-89C3-8388-83166F8B7345}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
@@ -170,6 +173,12 @@
     </ClInclude>
     <ClInclude Include="src\SLEngine\Renderer\VertexArray.h">
       <Filter>src\SLEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Scene\Components.h">
+      <Filter>src\SLEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Scene\Scene.h">
+      <Filter>src\SLEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\slpch.h">
       <Filter>src</Filter>
@@ -1516,6 +1525,9 @@
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\VertexArray.cpp">
       <Filter>src\SLEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Scene\Scene.cpp">
+      <Filter>src\SLEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\slpch.cpp">
       <Filter>src</Filter>
