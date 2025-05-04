@@ -185,6 +185,7 @@
     <ClInclude Include="src\SLEngine\Renderer\Texture.h" />
     <ClInclude Include="src\SLEngine\Renderer\VertexArray.h" />
     <ClInclude Include="src\SLEngine\Scene\Components.h" />
+    <ClInclude Include="src\SLEngine\Scene\Entity.h" />
     <ClInclude Include="src\SLEngine\Scene\Scene.h" />
     <ClInclude Include="src\slpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -690,6 +691,9 @@
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\VertexArray.cpp">
+      <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Scene\Entity.cpp">
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Scene\Scene.cpp">

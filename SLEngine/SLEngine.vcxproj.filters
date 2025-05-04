@@ -177,6 +177,9 @@
     <ClInclude Include="src\SLEngine\Scene\Components.h">
       <Filter>src\SLEngine\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\Scene\Entity.h">
+      <Filter>src\SLEngine\Scene</Filter>
+    </ClInclude>
     <ClInclude Include="src\SLEngine\Scene\Scene.h">
       <Filter>src\SLEngine\Scene</Filter>
     </ClInclude>
@@ -1525,6 +1528,9 @@
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\VertexArray.cpp">
       <Filter>src\SLEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Scene\Entity.cpp">
+      <Filter>src\SLEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Scene\Scene.cpp">
       <Filter>src\SLEngine\Scene</Filter>

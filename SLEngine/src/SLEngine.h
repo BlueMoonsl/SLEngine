@@ -15,6 +15,7 @@
 #include "SLEngine/ImGui/ImGuiLayer.h"
 
 #include "SLEngine/Scene/Scene.h"
+#include "SLEngine/Scene/Entity.h"
 #include "SLEngine/Scene/Components.h"
 
 // ---Renderer------------------------
