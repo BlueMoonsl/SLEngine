@@ -173,6 +173,7 @@
     <ClInclude Include="src\SLEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\SLEngine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\SLEngine\Renderer\Buffer.h" />
+    <ClInclude Include="src\SLEngine\Renderer\Camera.h" />
     <ClInclude Include="src\SLEngine\Renderer\Framebuffer.h" />
     <ClInclude Include="src\SLEngine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\SLEngine\Renderer\OrthographicCamera.h" />

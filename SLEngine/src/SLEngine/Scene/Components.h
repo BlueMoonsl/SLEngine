@@ -2,6 +2,8 @@
 
 #include <glm/glm.hpp>
 
+#include "SLEngine/Renderer/Camera.h"
+
 namespace SLEngine {
 
     struct TagComponent
@@ -37,6 +39,18 @@ namespace SLEngine {
         SpriteRendererComponent(const SpriteRendererComponent&) = default;
         SpriteRendererComponent(const glm::vec4& color)
             : Color(color) {
+        }
+    };
+
+    struct CameraComponent
+    {
+        SLEngine::Camera Camera;
+        bool Primary = true; // TODO: think about moving to Scene
+
+        CameraComponent() = default;
+        CameraComponent(const CameraComponent&) = default;
+        CameraComponent(const glm::mat4& projection)
+            : Camera(projection) {
         }
     };
 

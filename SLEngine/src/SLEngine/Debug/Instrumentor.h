@@ -26,15 +26,9 @@ namespace SLEngine {
 
     class Instrumentor
     {
-    private:
-        std::mutex m_Mutex;
-        InstrumentationSession* m_CurrentSession;
-        std::ofstream m_OutputStream;
     public:
-        Instrumentor()
-            : m_CurrentSession(nullptr)
-        {
-        }
+        Instrumentor(const Instrumentor&) = delete;
+        Instrumentor(Instrumentor&&) = delete;
 
         void BeginSession(const std::string& name, const std::string& filepath = "results.json")
         {
@@ -102,6 +96,16 @@ namespace SLEngine {
         }
 
     private:
+        Instrumentor()
+            : m_CurrentSession(nullptr)
+        {
+        }
+
+        ~Instrumentor()
+        {
+            EndSession();
+        }
+
         void WriteHeader()
         {
             m_OutputStream << "{\"otherData\": {},\"traceEvents\":[{}";
@@ -126,6 +130,11 @@ namespace SLEngine {
                 m_CurrentSession = nullptr;
             }
         }
+
+    private:
+        std::mutex m_Mutex;
+        InstrumentationSession* m_CurrentSession;
+        std::ofstream m_OutputStream;
     };
 
     class InstrumentationTimer
@@ -215,8 +224,10 @@ namespace SLEngine {
 
     #define SL_PROFILE_BEGIN_SESSION(name, filepath) ::SLEngine::Instrumentor::Get().BeginSession(name, filepath)
     #define SL_PROFILE_END_SESSION() ::SLEngine::Instrumentor::Get().EndSession()
-    #define SL_PROFILE_SCOPE(name) constexpr auto fixedName = ::SLEngine::InstrumentorUtils::CleanupOutputString(name, "__cdecl ");\
- 									::SLEngine::InstrumentationTimer timer##__LINE__(fixedName.Data)
+    #define SL_PROFILE_SCOPE_LINE2(name, line) constexpr auto fixedName##line = ::SLEngine::InstrumentorUtils::CleanupOutputString(name, "__cdecl ");\
+ 										       ::SLEngine::InstrumentationTimer timer##line(fixedName##line.Data)
+    #define SL_PROFILE_SCOPE_LINE(name, line) SL_PROFILE_SCOPE_LINE2(name, line)
+    #define SL_PROFILE_SCOPE(name) SL_PROFILE_SCOPE_LINE(name, __LINE__)
     #define SL_PROFILE_FUNCTION() SL_PROFILE_SCOPE(SL_FUNC_SIG)
 #else   
     #define SL_PROFILE_BEGIN_SESSION(name, filepath)
