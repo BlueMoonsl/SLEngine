@@ -19,7 +19,7 @@ int main(int argc, char** argv)
     app->Run();
     SL_PROFILE_END_SESSION();
 
-    SL_PROFILE_BEGIN_SESSION("Startup", "SLEngineProfile-Shutdown.json");
+    SL_PROFILE_BEGIN_SESSION("Shutdown", "SLEngineProfile-Shutdown.json");
     delete app;
     SL_PROFILE_END_SESSION();
 }
