@@ -19,6 +19,9 @@
     <Filter Include="src\SLEngine\Core">
       <UniqueIdentifier>{49DD719E-B5F3-6F34-FE6A-FB556AC040BC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\SLEngine\Debug">
+      <UniqueIdentifier>{87E1B96C-73C5-7AC2-DC25-7515C8286544}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\SLEngine\Events">
       <UniqueIdentifier>{15658007-81C6-5D15-0A34-A4C7769494D4}</UniqueIdentifier>
     </Filter>
@@ -27,6 +30,9 @@
     </Filter>
     <Filter Include="src\SLEngine\Renderer">
       <UniqueIdentifier>{170D29E0-8379-E4DA-4C6D-7C38B8980643}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SLEngine\Scene">
+      <UniqueIdentifier>{2E44C86D-1A28-89C3-8388-83166F8B7345}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -60,6 +66,9 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -82,6 +91,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Core\Application.h">
+      <Filter>src\SLEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Core\Base.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Core\Core.h">
@@ -108,11 +120,17 @@
     <ClInclude Include="src\SLEngine\Core\MouseButtonCodes.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\Core\MouseCodes.h">
+      <Filter>src\SLEngine\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\SLEngine\Core\Timestep.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Core\Window.h">
       <Filter>src\SLEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Debug\Instrumentor.h">
+      <Filter>src\SLEngine\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Events\ApplicationEvent.h">
       <Filter>src\SLEngine\Events</Filter>
@@ -132,6 +150,12 @@
     <ClInclude Include="src\SLEngine\Renderer\Buffer.h">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\Renderer\Camera.h">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Renderer\Framebuffer.h">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\SLEngine\Renderer\GraphicsContext.h">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
@@ -147,6 +171,9 @@
     <ClInclude Include="src\SLEngine\Renderer\Renderer.h">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\Renderer\Renderer2D.h">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\SLEngine\Renderer\RendererAPI.h">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
@@ -158,6 +185,18 @@
     </ClInclude>
     <ClInclude Include="src\SLEngine\Renderer\VertexArray.h">
       <Filter>src\SLEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Scene\Components.h">
+      <Filter>src\SLEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Scene\Entity.h">
+      <Filter>src\SLEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Scene\Scene.h">
+      <Filter>src\SLEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Scene\SceneCamera.h">
+      <Filter>src\SLEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\slpch.h">
       <Filter>src</Filter>
@@ -1419,12 +1458,16 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\Scene\ScriptableEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
@@ -1457,6 +1500,9 @@
     <ClCompile Include="src\SLEngine\Core\Log.cpp">
       <Filter>src\SLEngine\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\SLEngine\Core\Window.cpp">
+      <Filter>src\SLEngine\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\SLEngine\ImGui\ImGuiBuild.cpp">
       <Filter>src\SLEngine\ImGui</Filter>
     </ClCompile>
@@ -1464,6 +1510,12 @@
       <Filter>src\SLEngine\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\Buffer.cpp">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Renderer\Framebuffer.cpp">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Renderer\GraphicsContext.cpp">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\OrthographicCamera.cpp">
@@ -1478,6 +1530,9 @@
     <ClCompile Include="src\SLEngine\Renderer\Renderer.cpp">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\SLEngine\Renderer\Renderer2D.cpp">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\RendererAPI.cpp">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClCompile>
@@ -1489,6 +1544,15 @@
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\VertexArray.cpp">
       <Filter>src\SLEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Scene\Entity.cpp">
+      <Filter>src\SLEngine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Scene\Scene.cpp">
+      <Filter>src\SLEngine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Scene\SceneCamera.cpp">
+      <Filter>src\SLEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\slpch.cpp">
       <Filter>src</Filter>

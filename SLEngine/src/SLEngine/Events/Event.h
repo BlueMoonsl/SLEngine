@@ -1,7 +1,7 @@
 #pragma once
 
 #include "slpch.h"
-#include "SLEngine/Core/core.h"
+#include "SLEngine/Core/Base.h"
 
 namespace SLEngine {
 
@@ -36,9 +36,11 @@ namespace SLEngine {
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }\
 
-	class SLENGINE_API Event
+	class Event
 	{
 	public:
+		virtual ~Event() = default;
+
 		bool Handled = false;
 
 		virtual EventType GetEventType() const = 0;
@@ -46,7 +48,7 @@ namespace SLEngine {
 		virtual int GetCategoryFlags() const = 0;
 		virtual std::string ToString() const { return GetName(); }
 
-		inline bool IsInCategory(EventCategory category)
+		bool IsInCategory(EventCategory category)
 		{
 			return GetCategoryFlags() & category;
 		}

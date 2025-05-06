@@ -1,12 +1,12 @@
 #pragma once
 
-#include "SLEngine/Core/Core.h"
+#include "SLEngine/Core/Base.h"
 #include "SLEngine/Core/Timestep.h"
 #include "SLEngine/Events/Event.h"
 
 namespace SLEngine {
 
-    class SLENGINE_API Layer
+    class Layer
     {
     public:
         Layer(const std::string& name = "Layer");
@@ -18,7 +18,7 @@ namespace SLEngine {
         virtual void OnImGuiRender() {}
         virtual void OnEvent(Event& event) {}
 
-        inline const std::string& GetName() const { return m_DebugName; }
+        const std::string& GetName() const { return m_DebugName; }
     protected:
         std::string m_DebugName;
     };

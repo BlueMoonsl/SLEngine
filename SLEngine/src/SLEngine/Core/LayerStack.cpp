@@ -1,12 +1,7 @@
 #include "slpch.h"
-#include "LayerStack.h"
+#include "SLEngine/Core/LayerStack.h"
 
 namespace SLEngine {
-
-    LayerStack::LayerStack()
-    {
-        
-    }
 
     LayerStack::~LayerStack()
     {

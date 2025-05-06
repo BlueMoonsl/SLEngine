@@ -1,68 +1,80 @@
 #include "Sandbox2D.h"
-#include "imgui/imgui.h"
+#include <imgui/imgui.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Platform/OpenGL/OpenGLShader.h"
-
 Sandbox2D::Sandbox2D()
-    : Layer("Sandbox2D"), m_CameraController(1280.0f / 720.0f)
+    : Layer("Sandbox2D"), m_CameraController(1280.0f / 720.0f), m_SquareColor({ 0.2f, 0.3f, 0.8f, 1.0f })
 {
 }
 
 void Sandbox2D::OnAttach()
 {
-    m_SquareVA = SLEngine::VertexArray::Create();
+    SL_PROFILE_FUNCTION();
 
-    float squareVertices[5 * 4] = {
-        -0.5f, -0.5f, 0.0f,
-         0.5f, -0.5f, 0.0f,
-         0.5f,  0.5f, 0.0f,
-        -0.5f,  0.5f, 0.0f
-    };
+    m_CheckerboardTexture = SLEngine::Texture2D::Create("assets/textures/Checkerboard.png");
 
-    SLEngine::Ref<SLEngine::VertexBuffer> squareVB;
-    squareVB.reset(SLEngine::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
-    squareVB->SetLayout({
-        { SLEngine::ShaderDataType::Float3, "a_Position" }
-        });
-    m_SquareVA->AddVertexBuffer(squareVB);
-
-    uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-    SLEngine::Ref<SLEngine::IndexBuffer> squareIB;
-    squareIB.reset(SLEngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-    m_SquareVA->SetIndexBuffer(squareIB);
-
-    m_FlatColorShader = SLEngine::Shader::Create("assets/shaders/FlatColor.glsl");
 }
 
 void Sandbox2D::OnDetach()
 {
+    SL_PROFILE_FUNCTION();
 }
 
 void Sandbox2D::OnUpdate(SLEngine::Timestep ts)
 {
+    SL_PROFILE_FUNCTION();
     // Update
     m_CameraController.OnUpdate(ts);
 
     // Render
-    SLEngine::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-    SLEngine::RenderCommand::Clear();
+    SLEngine::Renderer2D::ResetStats();
+    {
+        SL_PROFILE_SCOPE("Renderer Prep");
+        SLEngine::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+        SLEngine::RenderCommand::Clear();
+    }
 
-    SLEngine::Renderer::BeginScene(m_CameraController.GetCamera());
+    {
+        static float rotation = 0.0f;
+        rotation += ts * 50.0f;
 
-    std::dynamic_pointer_cast<SLEngine::OpenGLShader>(m_FlatColorShader)->Bind();
-    std::dynamic_pointer_cast<SLEngine::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);
+        SL_PROFILE_SCOPE("Renderer Draw");
+        SLEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
+        SLEngine::Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, -45.0f, { 0.8f, 0.2f, 0.3f, 1.0f });
+        SLEngine::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
+        SLEngine::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, m_SquareColor);
+        SLEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 20.0f, 20.0f }, m_CheckerboardTexture, 10.0f);
+        SLEngine::Renderer2D::DrawRotatedQuad({ -2.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, rotation, m_CheckerboardTexture, 20.0f);
+        SLEngine::Renderer2D::EndScene();
 
-    SLEngine::Renderer::Submit(m_FlatColorShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
-
-    SLEngine::Renderer::EndScene();
+        SLEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
+        for (float y = -5.0f; y < 5.0f; y += 0.5f)
+        {
+            for (float x = -5.0f; x < 5.0f; x += 0.5f)
+            {
+                glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.7f };
+                SLEngine::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45f }, color);
+            }
+        }
+        SLEngine::Renderer2D::EndScene();
+    }
 }
 
 void Sandbox2D::OnImGuiRender()
 {
+    SL_PROFILE_FUNCTION();
+
     ImGui::Begin("Settings");
+
+    auto stats = SLEngine::Renderer2D::GetStats();
+    ImGui::Text("Renderer2D Stats:");
+    ImGui::Text("Draw Calls: %d", stats.DrawCalls);
+    ImGui::Text("Quads: %d", stats.QuadCount);
+    ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
+    ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+
     ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
     ImGui::End();
 }

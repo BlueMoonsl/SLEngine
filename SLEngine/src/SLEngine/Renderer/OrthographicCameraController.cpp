@@ -1,5 +1,5 @@
 #include "slpch.h"
-#include "OrthographicCameraController.h"
+#include "SLEngine/Renderer/OrthographicCameraController.h"
 
 #include "SLEngine/Core/Input.h"
 #include "SLEngine/Core/KeyCodes.h"
@@ -13,6 +13,8 @@ namespace SLEngine {
 
     void OrthographicCameraController::OnUpdate(Timestep ts)
     {
+        SL_PROFILE_FUNCTION();
+
         if (Input::IsKeyPressed(SL_KEY_A))
         {
             m_CameraPosition.x -= cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
@@ -57,13 +59,21 @@ namespace SLEngine {
 
     void OrthographicCameraController::OnEvent(Event& e)
     {
+        SL_PROFILE_FUNCTION();
         EventDispatcher dispatcher(e);
         dispatcher.Dispatch<MouseScrolledEvent>(SL_BIND_EVENT_FN(OrthographicCameraController::OnMouseScrolled));
         dispatcher.Dispatch<WindowResizeEvent>(SL_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
     }
 
+    void OrthographicCameraController::OnResize(float width, float height)
+    {
+        m_AspectRatio = width / height;
+        m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+    }
+
     bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
     {
+        SL_PROFILE_FUNCTION();
         m_ZoomLevel -= e.GetYOffset() * 0.25f;
         m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
         m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
@@ -72,8 +82,9 @@ namespace SLEngine {
 
     bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
     {
-        m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
-        m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+        SL_PROFILE_FUNCTION();
+
+        OnResize((float)e.GetWidth(), (float)e.GetHeight());
         return false;
     }
 

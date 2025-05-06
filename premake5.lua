@@ -1,5 +1,7 @@
 workspace "SLEngine"	
-	architecture "x64"	
+	architecture "x86_64"	
+	startproject "Editor"
+	
 	configurations{
 		"Debug",
 		"Release",
@@ -8,8 +10,6 @@ workspace "SLEngine"
 
 	filter "files:**.cpp"
         buildoptions { "-utf-8" }
-
-	startproject "Sandbox"
 
 	flags
  	{
@@ -24,6 +24,7 @@ IncludeDir["Glad"] = "SLEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "SLEngine/vendor/imgui"
 IncludeDir["glm"] = "SLEngine/vendor/glm"
 IncludeDir["stb_image"] = "SLEngine/vendor/stb_image"
+IncludeDir["entt"] = "SLEngine/vendor/entt/include"
 
 include "SLEngine/vendor/GLFW"
 include "SLEngine/vendor/Glad"
@@ -52,7 +53,8 @@ project "SLEngine"
 	}
 
 	defines{
-		"_CRT_SECURE_NO_WARNINGS"
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
 	}
 
 	includedirs{
@@ -62,7 +64,8 @@ project "SLEngine"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
- 		"%{IncludeDir.stb_image}"
+ 		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 	}
 	links { 
 		"GLFW",
@@ -75,8 +78,7 @@ project "SLEngine"
 		systemversion "latest"	
 
 		defines{
-			"SL_BUILD_DLL",
-			"GLFW_INCLUDE_NONE" 
+
 		}
 
 	filter "configurations:Debug"
@@ -112,6 +114,10 @@ project "Sandbox"
 		"%{prj.name}/src/**.cpp"
 	}
 
+	defines{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
 	includedirs{
 		"SLEngine/vendor/spdlog/include",
 		"SLEngine/src",
@@ -126,6 +132,58 @@ project "Sandbox"
 	filter "system:windows"
 		systemversion "latest"
 
+	filter "configurations:Debug"
+		defines "SL_DEBUG"
+		buildoptions "/MDd"
+		--runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		defines "SL_RELEASE"
+		buildoptions "/MD"
+		--runtime "Release"
+		optimize "on"
+
+	filter "configurations:Dist"
+		defines "SL_DIST"
+		buildoptions "/MD"
+		--runtime "Release"
+		optimize "on"
+
+
+project "Editor"
+	location "Editor"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"SLEngine/vendor/spdlog/include",
+		"SLEngine/src",
+		"SLEngine/vendor",
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
+	}
+
+	links
+	{
+		"SLEngine"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+		
 	filter "configurations:Debug"
 		defines "SL_DEBUG"
 		buildoptions "/MDd"

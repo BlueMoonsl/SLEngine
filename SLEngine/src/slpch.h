@@ -15,6 +15,8 @@
 
 #include "SLEngine/Core/Log.h"
 
+#include "SLEngine/Debug/Instrumentor.h"
+
 #ifdef SL_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

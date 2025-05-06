@@ -1,7 +1,7 @@
 #pragma once
 
-#include "core.h"
-#include "Window.h"
+#include "SLEngine/Core/Base.h"
+#include "SLEngine/Core/Window.h"
 #include "LayerStack.h"
 #include "SLEngine/Events/Event.h"
 #include "SLEngine/Events/ApplicationEvent.h"
@@ -9,24 +9,30 @@
 #include "SLEngine/Core/Timestep.h"
 #include "SLEngine/ImGui/ImGuiLayer.h"
 
+int main(int argc, char** argv);
+
 namespace SLEngine
 {
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "SLEngine App");
 		virtual ~Application();
 
-		void Run();
 		void OnEvent(Event& e);
 
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
-		inline Window& GetWindow() { return *m_Window; }
+		Window& GetWindow() { return *m_Window; }
 
-		inline static Application& Get() { return *s_Instance; }
+		void Close();
+
+		ImGuiLayer* GetImGuiLayer() { return m_ImGuiLayer; }
+
+		static Application& Get() { return *s_Instance; }
 	private:
+		void Run();
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 	private:
@@ -39,6 +45,7 @@ namespace SLEngine
 		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
+		friend int ::main(int argc, char** argv);
 	};
 
 	Application* CreateApplication();
