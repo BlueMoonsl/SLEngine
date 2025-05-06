@@ -81,9 +81,6 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
-      <Filter>src\Platform\Windows</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
@@ -117,7 +114,7 @@
     <ClInclude Include="src\SLEngine\Core\Log.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\SLEngine\Core\MouseButtonCodes.h">
+    <ClInclude Include="src\SLEngine\Core\MouseCodes.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Core\MouseCodes.h">
