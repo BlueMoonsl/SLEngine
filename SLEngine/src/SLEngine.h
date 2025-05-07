@@ -6,6 +6,7 @@
 #include "SLEngine/Core/Application.h"
 #include "SLEngine/Core/Layer.h"
 #include "SLEngine/Core/Log.h"
+#include "SLEngine/Core/Assert.h"
 
 #include "SLEngine/Core/Input.h"
 #include "SLEngine/Core/KeyCodes.h"

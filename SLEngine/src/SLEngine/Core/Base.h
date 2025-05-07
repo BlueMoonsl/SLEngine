@@ -18,15 +18,8 @@
 	#define SL_DEBUGBREAK()
 #endif
 
-// TODO: Make this macro able to take in no arguments except condition
-#ifdef SL_ENABLE_ASSERTS
-	#define SL_ASSERT(x, ...) { if(!(x)) { SL_ERROR("Assertion Failed: {0}", __VA_ARGS__); SL_DEBUGBREAK(); } }
-	#define SL_CORE_ASSERT(x, ...) { if(!(x)) { SL_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); SL_DEBUGBREAK(); } }
-#else
-	#define SL_ASSERT(x, ...)
-	#define SL_CORE_ASSERT(x, ...)
-#endif
-
+#define SL_EXPAND_MACRO(x) x
+#define SL_STRINGIFY_MACRO(x) #x
 
 #define BIT(x) (1 << x)
 
@@ -51,3 +44,6 @@ namespace SLEngine {
 	}
 
 }
+
+#include "SLEngine/Core/Log.h"
+#include "SLEngine/Core/Assert.h"

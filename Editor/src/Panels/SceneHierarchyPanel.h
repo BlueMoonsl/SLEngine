@@ -1,7 +1,6 @@
 #pragma once
 
 #include "SLEngine/Core/Base.h"
-#include "SLEngine/Core/Log.h"
 #include "SLEngine/Scene/Scene.h"
 #include "SLEngine/Scene/Entity.h"
 

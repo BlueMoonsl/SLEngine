@@ -156,6 +156,7 @@
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\SLEngine.h" />
     <ClInclude Include="src\SLEngine\Core\Application.h" />
+    <ClInclude Include="src\SLEngine\Core\Assert.h" />
     <ClInclude Include="src\SLEngine\Core\Base.h" />
     <ClInclude Include="src\SLEngine\Core\EntryPoint.h" />
     <ClInclude Include="src\SLEngine\Core\Input.h" />
