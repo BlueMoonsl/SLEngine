@@ -6,6 +6,10 @@
 #include <iomanip>
 #include <string>
 #include <thread>
+#include <mutex>
+#include <sstream>
+
+#include "SLEngine/Core/Log.h"
 
 namespace SLEngine {
 

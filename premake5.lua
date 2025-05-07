@@ -1,3 +1,5 @@
+include "./vendor/premake/premake_customization/solution_items.lua"
+
 workspace "SLEngine"	
 	architecture "x86_64"	
 	startproject "Editor"
@@ -7,6 +9,11 @@ workspace "SLEngine"
 		"Release",
 		"Dist"
 	}
+
+	solution_items
+ 	{
+ 		".editorconfig"
+ 	}
 
 	filter "files:**.cpp"
         buildoptions { "-utf-8" }
@@ -18,186 +25,22 @@ workspace "SLEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFW"] = "SLEngine/vendor/GLFW/include"
-IncludeDir["Glad"] = "SLEngine/vendor/Glad/include"
-IncludeDir["ImGui"] = "SLEngine/vendor/imgui"
-IncludeDir["glm"] = "SLEngine/vendor/glm"
-IncludeDir["stb_image"] = "SLEngine/vendor/stb_image"
-IncludeDir["entt"] = "SLEngine/vendor/entt/include"
+IncludeDir["GLFW"] = "%{wks.location}/SLEngine/vendor/GLFW/include"
+IncludeDir["Glad"] = "%{wks.location}/SLEngine/vendor/Glad/include"
+IncludeDir["ImGui"] = "%{wks.location}/SLEngine/vendor/imgui"
+IncludeDir["glm"] = "%{wks.location}/SLEngine/vendor/glm"
+IncludeDir["stb_image"] = "%{wks.location}/SLEngine/vendor/stb_image"
+IncludeDir["entt"] = "%{wks.location}/SLEngine/vendor/entt/include"
 
-include "SLEngine/vendor/GLFW"
-include "SLEngine/vendor/Glad"
-include "SLEngine/vendor/imgui"
+group "Dependencies"
+ 	include "vendor/premake"
+ 	include "SLEngine/vendor/GLFW"
+ 	include "SLEngine/vendor/Glad"
+ 	include "SLEngine/vendor/imgui"
+group ""
 
-project "SLEngine"		
-	location "SLEngine"
-	kind "StaticLib"
-	language "C++"
-	cppdialect "C++17"
-	staticruntime "on"
-
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
-	pchheader "slpch.h"
-	pchsource "SLEngine/src/slpch.cpp"
-
-	files{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
-		"%{prj.name}/vendor/stb_image/**.h",
- 		"%{prj.name}/vendor/stb_image/**.cpp",
-		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl"
-	}
-
-	defines{
-		"_CRT_SECURE_NO_WARNINGS",
-		"GLFW_INCLUDE_NONE"
-	}
-
-	includedirs{
-		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}",
- 		"%{IncludeDir.stb_image}",
-		"%{IncludeDir.entt}"
-	}
-	links { 
-		"GLFW",
-		"Glad",
-		"ImGui",
-		"opengl32.lib"
-	}
-
-	filter "system:windows"
-		systemversion "latest"	
-
-		defines{
-
-		}
-
-	filter "configurations:Debug"
-		defines "SL_DEBUG"
-		buildoptions "/MDd"
-		--runtime "Debug"
-		symbols "on"
-
-	filter "configurations:Release"
-		defines "SL_RELEASE"
-		buildoptions "/MD"
-		--runtime "Release"
-		optimize "on"
-
-	filter "configurations:Dist"
-		defines "SL_DIST"
-		buildoptions "/MD"
-		--runtime "Release"
-		optimize "on"
-
-project "Sandbox"
-	location "Sandbox"
-	kind "ConsoleApp"
-	language "C++"
-	cppdialect "C++17"
-	staticruntime "on"	
-
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
-	files{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
-	}
-
-	defines{
-		"_CRT_SECURE_NO_WARNINGS"
-	}
-
-	includedirs{
-		"SLEngine/vendor/spdlog/include",
-		"SLEngine/src",
-		"SLEngine/vendor",
-		"%{IncludeDir.glm}"
-	}
-
-	links{
-		"SLEngine"
-	}
-
-	filter "system:windows"
-		systemversion "latest"
-
-	filter "configurations:Debug"
-		defines "SL_DEBUG"
-		buildoptions "/MDd"
-		--runtime "Debug"
-		symbols "on"
-
-	filter "configurations:Release"
-		defines "SL_RELEASE"
-		buildoptions "/MD"
-		--runtime "Release"
-		optimize "on"
-
-	filter "configurations:Dist"
-		defines "SL_DIST"
-		buildoptions "/MD"
-		--runtime "Release"
-		optimize "on"
-
-
-project "Editor"
-	location "Editor"
-	kind "ConsoleApp"
-	language "C++"
-	cppdialect "C++17"
-	staticruntime "on"
-
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
-	files
-	{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
-	}
-
-	includedirs
-	{
-		"SLEngine/vendor/spdlog/include",
-		"SLEngine/src",
-		"SLEngine/vendor",
-		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
-	}
-
-	links
-	{
-		"SLEngine"
-	}
-
-	filter "system:windows"
-		systemversion "latest"
-		
-	filter "configurations:Debug"
-		defines "SL_DEBUG"
-		buildoptions "/MDd"
-		--runtime "Debug"
-		symbols "on"
-
-	filter "configurations:Release"
-		defines "SL_RELEASE"
-		buildoptions "/MD"
-		--runtime "Release"
-		optimize "on"
-
-	filter "configurations:Dist"
-		defines "SL_DIST"
-		buildoptions "/MD"
-		--runtime "Release"
-		optimize "on"
+include "SLEngine"
+include "Sandbox"
+include "Editor"

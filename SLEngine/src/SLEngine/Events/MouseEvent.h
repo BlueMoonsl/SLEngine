@@ -1,13 +1,13 @@
 #pragma once
 
 #include "SLEngine/Events/Event.h"
-#include "SLEngine/Core/Input.h"
+#include "SLEngine/Core/MouseCodes.h"
 
 namespace SLEngine {
 	class MouseMovedEvent : public Event
 	{
 	public:
-		MouseMovedEvent(float x, float y)
+		MouseMovedEvent(const float x, const float y)
 			: m_MouseX(x), m_MouseY(y) {
 		}
 
@@ -30,7 +30,7 @@ namespace SLEngine {
 	class MouseScrolledEvent : public Event
 	{
 	public:
-		MouseScrolledEvent(float xOffset, float yOffset)
+		MouseScrolledEvent(const float xOffset, const float yOffset)
 			: m_XOffset(xOffset), m_YOffset(yOffset) { }
 
 		float GetXOffset() const { return m_XOffset; }
@@ -52,11 +52,11 @@ namespace SLEngine {
 	class MouseButtonEvent : public Event
 	{
 	public:
-		inline MouseCode GetMouseButton() const { return m_Button; }
+		MouseCode GetMouseButton() const { return m_Button; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	protected:
-		MouseButtonEvent(MouseCode button)
+		MouseButtonEvent(const MouseCode button)
 			: m_Button(button) {}
 
 		MouseCode m_Button;
@@ -65,7 +65,7 @@ namespace SLEngine {
 	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonPressedEvent(MouseCode button)
+		MouseButtonPressedEvent(const MouseCode button)
 			: MouseButtonEvent(button) {}
 
 		std::string ToString() const override
@@ -81,7 +81,7 @@ namespace SLEngine {
 	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonReleasedEvent(MouseCode button)
+		MouseButtonReleasedEvent(const MouseCode button)
 			: MouseButtonEvent(button) {}
 
 		std::string ToString() const override

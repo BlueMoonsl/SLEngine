@@ -1,6 +1,7 @@
 #pragma once
 
-#include "slpch.h"
+#include <sstream>
+
 #include "SLEngine/Core/Base.h"
 #include "SLEngine/Events/Event.h"
 

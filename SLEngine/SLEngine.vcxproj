@@ -157,15 +157,14 @@
     <ClInclude Include="src\SLEngine.h" />
     <ClInclude Include="src\SLEngine\Core\Application.h" />
     <ClInclude Include="src\SLEngine\Core\Base.h" />
-    <ClInclude Include="src\SLEngine\Core\Core.h" />
     <ClInclude Include="src\SLEngine\Core\EntryPoint.h" />
     <ClInclude Include="src\SLEngine\Core\Input.h" />
     <ClInclude Include="src\SLEngine\Core\KeyCodes.h" />
     <ClInclude Include="src\SLEngine\Core\Layer.h" />
     <ClInclude Include="src\SLEngine\Core\LayerStack.h" />
     <ClInclude Include="src\SLEngine\Core\Log.h" />
-    <ClInclude Include="src\SLEngine\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\SLEngine\Core\MouseCodes.h" />
+    <ClInclude Include="src\SLEngine\Core\PlatformDetection.h" />
     <ClInclude Include="src\SLEngine\Core\Timestep.h" />
     <ClInclude Include="src\SLEngine\Core\Window.h" />
     <ClInclude Include="src\SLEngine\Debug\Instrumentor.h" />

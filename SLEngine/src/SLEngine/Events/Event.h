@@ -1,6 +1,8 @@
 #pragma once
 
-#include "slpch.h"
+#include <functional>
+
+#include "SLEngine/Debug/Instrumentor.h"
 #include "SLEngine/Core/Base.h"
 
 namespace SLEngine {
