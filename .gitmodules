@@ -10,3 +10,6 @@
 [submodule "SLEngine/vendor/glm"]
 	path = SLEngine/vendor/glm
 	url = https://github.com/g-truc/glm.git
+[submodule "SLEngine/vendor/yaml-cpp"]
+	path = SLEngine/vendor/yaml-cpp
+	url = https://github.com/TheCherno/yaml-cpp
