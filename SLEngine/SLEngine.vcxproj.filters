@@ -34,6 +34,9 @@
     <Filter Include="src\SLEngine\Scene">
       <UniqueIdentifier>{2E44C86D-1A28-89C3-8388-83166F8B7345}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\SLEngine\Utils">
+      <UniqueIdentifier>{71D8F56D-5DBC-B6C3-C61C-B116B21FA145}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
@@ -200,6 +203,9 @@
     </ClInclude>
     <ClInclude Include="src\SLEngine\Scene\ScriptableEntity.h">
       <Filter>src\SLEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Utils\PlatformUtils.h">
+      <Filter>src\SLEngine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\slpch.h">
       <Filter>src</Filter>
@@ -1485,6 +1491,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsPlatformUtils.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
