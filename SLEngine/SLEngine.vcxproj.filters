@@ -90,6 +90,9 @@
     <ClInclude Include="src\SLEngine\Core\Application.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\Core\Assert.h">
+      <Filter>src\SLEngine\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\SLEngine\Core\Base.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
@@ -190,6 +193,9 @@
       <Filter>src\SLEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Scene\SceneCamera.h">
+      <Filter>src\SLEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Scene\SceneSerializer.h">
       <Filter>src\SLEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Scene\ScriptableEntity.h">
@@ -1455,7 +1461,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\SLEngine\Core\Assert.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1549,6 +1554,9 @@
       <Filter>src\SLEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Scene\SceneCamera.cpp">
+      <Filter>src\SLEngine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Scene\SceneSerializer.cpp">
       <Filter>src\SLEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\slpch.cpp">
