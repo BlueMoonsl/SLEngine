@@ -1,8 +1,9 @@
 #pragma once
 
-#include "entt.hpp"
-
 #include "SLEngine/Core/Timestep.h"
+#include "SLEngine/Renderer/EditorCamera.h"
+
+#include "entt.hpp"
 
 namespace SLEngine {
 
@@ -17,7 +18,8 @@ namespace SLEngine {
         Entity CreateEntity(const std::string& name = std::string());
 		void DestroyEntity(Entity entity);
 
-        void OnUpdate(Timestep ts);
+		void OnUpdateRuntime(Timestep ts);
+		void OnUpdateEditor(Timestep ts, EditorCamera& camera);
         void OnViewportResize(uint32_t width, uint32_t height);
 
 		Entity GetPrimaryCameraEntity();

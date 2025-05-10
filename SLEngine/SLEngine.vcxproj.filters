@@ -162,6 +162,9 @@
     <ClInclude Include="src\SLEngine\Renderer\Camera.h">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\Renderer\EditorCamera.h">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\SLEngine\Renderer\Framebuffer.h">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClInclude>
@@ -1536,6 +1539,9 @@
       <Filter>src\SLEngine\Math</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\Buffer.cpp">
+      <Filter>src\SLEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Renderer\EditorCamera.cpp">
       <Filter>src\SLEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\Framebuffer.cpp">

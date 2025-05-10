@@ -177,6 +177,7 @@
     <ClInclude Include="src\SLEngine\Math\Math.h" />
     <ClInclude Include="src\SLEngine\Renderer\Buffer.h" />
     <ClInclude Include="src\SLEngine\Renderer\Camera.h" />
+    <ClInclude Include="src\SLEngine\Renderer\EditorCamera.h" />
     <ClInclude Include="src\SLEngine\Renderer\Framebuffer.h" />
     <ClInclude Include="src\SLEngine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\SLEngine\Renderer\OrthographicCamera.h" />
@@ -673,6 +674,9 @@
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\Buffer.cpp">
+      <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Renderer\EditorCamera.cpp">
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\Framebuffer.cpp">
