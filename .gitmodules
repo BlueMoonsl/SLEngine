@@ -13,3 +13,6 @@
 [submodule "SLEngine/vendor/yaml-cpp"]
 	path = SLEngine/vendor/yaml-cpp
 	url = https://github.com/TheCherno/yaml-cpp
+[submodule "SLEngine/vendor/ImGuizmo"]
+	path = SLEngine/vendor/ImGuizmo
+	url = https://github.com/TheCherno/ImGuizmo
