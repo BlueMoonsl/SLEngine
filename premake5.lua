@@ -1,4 +1,5 @@
 include "./vendor/premake/premake_customization/solution_items.lua"
+include "Dependencies.lua"
 
 workspace "SLEngine"	
 	architecture "x86_64"	
@@ -24,17 +25,6 @@ workspace "SLEngine"
  	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-
--- Include directories relative to root folder (solution directory)
-IncludeDir = {}
-IncludeDir["GLFW"] = "%{wks.location}/SLEngine/vendor/GLFW/include"
-IncludeDir["Glad"] = "%{wks.location}/SLEngine/vendor/Glad/include"
-IncludeDir["ImGui"] = "%{wks.location}/SLEngine/vendor/imgui"
-IncludeDir["glm"] = "%{wks.location}/SLEngine/vendor/glm"
-IncludeDir["stb_image"] = "%{wks.location}/SLEngine/vendor/stb_image"
-IncludeDir["entt"] = "%{wks.location}/SLEngine/vendor/entt/include"
-IncludeDir["yaml_cpp"] = "%{wks.location}/SLEngine/vendor/yaml-cpp/include"
-IncludeDir["ImGuizmo"] = "%{wks.location}/SLEngine/vendor/ImGuizmo"
 
 group "Dependencies"
  	include "vendor/premake"

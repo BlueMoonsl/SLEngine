@@ -13,10 +13,23 @@ int main(int argc, char** argv);
 
 namespace SLEngine
 {
+
+	struct ApplicationCommandLineArgs
+	{
+		int Count = 0;
+		char** Args = nullptr;
+
+		const char* operator[](int index) const
+		{
+			SL_CORE_ASSERT(index < Count);
+			return Args[index];
+		}
+	};
+
 	class Application
 	{
 	public:
-		Application(const std::string& name = "SLEngine App");
+		Application(const std::string& name = "SLEngine App", ApplicationCommandLineArgs args = ApplicationCommandLineArgs());
 		virtual ~Application();
 
 		void OnEvent(Event& e);
@@ -31,11 +44,14 @@ namespace SLEngine
 		ImGuiLayer* GetImGuiLayer() { return m_ImGuiLayer; }
 
 		static Application& Get() { return *s_Instance; }
+
+		ApplicationCommandLineArgs GetCommandLineArgs() const { return m_CommandLineArgs; }
 	private:
 		void Run();
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 	private:
+		ApplicationCommandLineArgs m_CommandLineArgs;
 		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
@@ -48,6 +64,7 @@ namespace SLEngine
 		friend int ::main(int argc, char** argv);
 	};
 
-	Application* CreateApplication();
+	// To be defined in CLIENT
+	Application* CreateApplication(ApplicationCommandLineArgs args);
 }
 

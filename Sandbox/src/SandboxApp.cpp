@@ -17,6 +17,6 @@ public:
 	}
 };
 
-SLEngine::Application* SLEngine::CreateApplication() {
+SLEngine::Application* SLEngine::CreateApplication(ApplicationCommandLineArgs args) {
 	return new Sandbox();
 }

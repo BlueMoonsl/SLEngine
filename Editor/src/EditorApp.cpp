@@ -8,8 +8,8 @@ namespace SLEngine {
     class Editor : public Application
     {
     public:
-        Editor()
-            : Application("SLEngine Editor")
+		Editor(ApplicationCommandLineArgs args)
+			: Application("Editor", args)
         {
             PushLayer(new EditorLayer());
         }
@@ -19,9 +19,9 @@ namespace SLEngine {
         }
     };
 
-    Application* CreateApplication()
+	Application* CreateApplication(ApplicationCommandLineArgs args)
     {
-        return new Editor();
+		return new Editor(args);
     }
 
 }
