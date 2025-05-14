@@ -6,7 +6,7 @@
 
 class Sandbox : public SLEngine::Application {
 public:
-	Sandbox()
+	Sandbox(SLEngine::ApplicationCommandLineArgs args)
 	{
         // PushLayer(new ExampleLayer());
         PushLayer(new Sandbox2D());
@@ -17,6 +17,6 @@ public:
 	}
 };
 
-SLEngine::Application* SLEngine::CreateApplication(ApplicationCommandLineArgs args) {
-	return new Sandbox();
+SLEngine::Application* SLEngine::CreateApplication(SLEngine::ApplicationCommandLineArgs args) {
+	return new Sandbox(args);
 }
