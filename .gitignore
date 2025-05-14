@@ -2,7 +2,7 @@
 **/bin/
 bin-int/
 
-# Hazel files
+# SLEngine files
 *.log
 
 # Visual Studio files and folder
@@ -16,3 +16,4 @@ bin-int/
 SLEngine/vendor/VulkanSDK
 Editor/assets/cache
 scripts/__pycache__
+SLEngine/vendor/yaml-cpp

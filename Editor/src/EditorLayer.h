@@ -2,6 +2,7 @@
 
 #include "SLEngine.h"
 #include "Panels/SceneHierarchyPanel.h"
+#include "Panels/ContentBrowserPanel.h"
 
 #include "SLEngine/Renderer/EditorCamera.h"
 
@@ -57,6 +58,7 @@ namespace SLEngine {
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
+		ContentBrowserPanel m_ContentBrowserPanel;
     };
 
 }
