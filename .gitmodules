@@ -16,3 +16,6 @@
 [submodule "SLEngine/vendor/ImGuizmo"]
 	path = SLEngine/vendor/ImGuizmo
 	url = https://github.com/TheCherno/ImGuizmo
+[submodule "SLEngine/vendor/Box2D"]
+	path = SLEngine/vendor/Box2D
+	url = https://github.com/thecherno/box2d
