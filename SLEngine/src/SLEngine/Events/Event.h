@@ -1,9 +1,9 @@
 #pragma once
 
-#include <functional>
-
 #include "SLEngine/Debug/Instrumentor.h"
 #include "SLEngine/Core/Base.h"
+
+#include <functional>
 
 namespace SLEngine {
 

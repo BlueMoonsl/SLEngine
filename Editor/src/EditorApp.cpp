@@ -8,20 +8,20 @@ namespace SLEngine {
     class Editor : public Application
     {
     public:
-		Editor(ApplicationCommandLineArgs args)
-			: Application("Editor", args)
+		Editor(const ApplicationSpecification& spec)
+			: Application(spec)
         {
             PushLayer(new EditorLayer());
-        }
-
-        ~Editor()
-        {
         }
     };
 
 	Application* CreateApplication(ApplicationCommandLineArgs args)
     {
-		return new Editor(args);
+		ApplicationSpecification spec;
+		spec.Name = "Editor";
+		spec.CommandLineArgs = args;
+
+		return new Editor(spec);
     }
 
 }

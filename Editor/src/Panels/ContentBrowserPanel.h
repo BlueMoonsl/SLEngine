@@ -1,8 +1,8 @@
 #pragma once
 
-#include <filesystem>
-
 #include "SLEngine/Renderer/Texture.h"
+
+#include <filesystem>
 
 namespace SLEngine {
 

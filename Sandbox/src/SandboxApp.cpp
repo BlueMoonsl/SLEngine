@@ -6,7 +6,8 @@
 
 class Sandbox : public SLEngine::Application {
 public:
-	Sandbox(SLEngine::ApplicationCommandLineArgs args)
+	Sandbox(const SLEngine::ApplicationSpecification& specification)
+		: SLEngine::Application(specification)
 	{
         // PushLayer(new ExampleLayer());
         PushLayer(new Sandbox2D());
@@ -18,5 +19,10 @@ public:
 };
 
 SLEngine::Application* SLEngine::CreateApplication(SLEngine::ApplicationCommandLineArgs args) {
-	return new Sandbox(args);
+	ApplicationSpecification spec;
+	spec.Name = "Sandbox";
+	spec.WorkingDirectory = "../Editor";
+	spec.CommandLineArgs = args;
+
+	return new Sandbox(spec);
 }

@@ -1,7 +1,8 @@
 #pragma once
 
-#include <memory>
 #include "SLEngine/Renderer/Buffer.h"
+
+#include <memory>
 
 namespace SLEngine {
 

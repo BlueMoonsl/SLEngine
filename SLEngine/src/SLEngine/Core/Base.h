@@ -1,8 +1,8 @@
 #pragma once
 
-#include <memory>
-
 #include "SLEngine/Core/PlatformDetection.h"
+
+#include <memory>
 
 #ifdef SL_DEBUG
 	#if defined(SL_PLATFORM_WINDOWS)

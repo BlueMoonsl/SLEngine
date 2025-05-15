@@ -1,8 +1,9 @@
 #pragma once
 
-#include <glm/glm.hpp>
 #include "SLEngine/Core/KeyCodes.h"
 #include "SLEngine/Core/MouseCodes.h"
+
+#include <glm/glm.hpp>
 
 namespace SLEngine {
 	class Input {

@@ -1,9 +1,9 @@
 #pragma once
 
-#include <sstream>
-
 #include "SLEngine/Core/Base.h"
 #include "SLEngine/Events/Event.h"
+
+#include <sstream>
 
 namespace SLEngine {
 
