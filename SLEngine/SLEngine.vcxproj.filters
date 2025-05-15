@@ -138,6 +138,9 @@
     <ClInclude Include="src\SLEngine\Core\Timestep.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\Core\UUID.h">
+      <Filter>src\SLEngine\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\SLEngine\Core\Window.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
@@ -1536,6 +1539,9 @@
       <Filter>src\SLEngine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Core\Log.cpp">
+      <Filter>src\SLEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Core\UUID.cpp">
       <Filter>src\SLEngine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Core\Window.cpp">

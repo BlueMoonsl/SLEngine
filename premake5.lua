@@ -28,6 +28,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 group "Dependencies"
  	include "vendor/premake"
+	include "SLEngine/vendor/Box2D"
  	include "SLEngine/vendor/GLFW"
  	include "SLEngine/vendor/Glad"
  	include "SLEngine/vendor/imgui"
