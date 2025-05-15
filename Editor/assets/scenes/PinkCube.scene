@@ -9,7 +9,7 @@ Entities:
       Scale: [1, 1, 1]
     SpriteRendererComponent:
       Color: [1, 0, 0.949807167, 1]
-  - Entity: 2335431429201735937
+  - Entity: 633592977405320190
     TagComponent:
       Tag: Right
     TransformComponent:
