@@ -14,6 +14,7 @@
 #include "box2d/b2_body.h"
 #include "box2d/b2_fixture.h"
 #include "box2d/b2_polygon_shape.h"
+#include "box2d/b2_circle_shape.h"
 
 namespace SLEngine {
 
@@ -30,14 +31,14 @@ namespace SLEngine {
 		return b2_staticBody;
 	}
 
-    Scene::Scene()
-    {
+	Scene::Scene()
+	{
 
-    }
+	}
 
-    Scene::~Scene()
-    {
-    }
+	Scene::~Scene()
+	{
+	}
 
 	template<typename Component>
 	static void CopyComponent(entt::registry& dst, entt::registry& src, const std::unordered_map<UUID, entt::entity>& enttMap)
@@ -90,24 +91,25 @@ namespace SLEngine {
 		CopyComponent<NativeScriptComponent>(dstSceneRegistry, srcSceneRegistry, enttMap);
 		CopyComponent<Rigidbody2DComponent>(dstSceneRegistry, srcSceneRegistry, enttMap);
 		CopyComponent<BoxCollider2DComponent>(dstSceneRegistry, srcSceneRegistry, enttMap);
+		CopyComponent<CircleCollider2DComponent>(dstSceneRegistry, srcSceneRegistry, enttMap);
 
 		return newScene;
 	}
 
-    Entity Scene::CreateEntity(const std::string& name)
+	Entity Scene::CreateEntity(const std::string& name)
 	{
 		return CreateEntityWithUUID(UUID(), name);
 	}
 
-	Entity Scene::CreateEntityWithUUID(UUID uuid, const std::string & name)
-    {
-        Entity entity = { m_Registry.create(), this };
+	Entity Scene::CreateEntityWithUUID(UUID uuid, const std::string& name)
+	{
+		Entity entity = { m_Registry.create(), this };
 		entity.AddComponent<IDComponent>(uuid);
-        entity.AddComponent<TransformComponent>();
-        auto& tag = entity.AddComponent<TagComponent>();
-        tag.Tag = name.empty() ? "Entity" : name;
-        return entity;
-    }
+		entity.AddComponent<TransformComponent>();
+		auto& tag = entity.AddComponent<TagComponent>();
+		tag.Tag = name.empty() ? "Entity" : name;
+		return entity;
+	}
 
 	void Scene::DestroyEntity(Entity entity)
 	{
@@ -149,6 +151,23 @@ namespace SLEngine {
 				fixtureDef.restitutionThreshold = bc2d.RestitutionThreshold;
 				body->CreateFixture(&fixtureDef);
 			}
+
+			if (entity.HasComponent<CircleCollider2DComponent>())
+			{
+				auto& cc2d = entity.GetComponent<CircleCollider2DComponent>();
+
+				b2CircleShape circleShape;
+				circleShape.m_p.Set(cc2d.Offset.x, cc2d.Offset.y);
+				circleShape.m_radius = transform.Scale.x * cc2d.Radius;
+
+				b2FixtureDef fixtureDef;
+				fixtureDef.shape = &circleShape;
+				fixtureDef.density = cc2d.Density;
+				fixtureDef.friction = cc2d.Friction;
+				fixtureDef.restitution = cc2d.Restitution;
+				fixtureDef.restitutionThreshold = cc2d.RestitutionThreshold;
+				body->CreateFixture(&fixtureDef);
+			}
 		}
 	}
 
@@ -159,23 +178,23 @@ namespace SLEngine {
 	}
 
 	void Scene::OnUpdateRuntime(Timestep ts)
-    {
-        // Update scripts
-        {
-            m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto& nsc)
-                {
+	{
+		// Update scripts
+		{
+			m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto& nsc)
+				{
 					// TODO: Move to Scene::OnScenePlay
-                    if (!nsc.Instance)
-                    {
+					if (!nsc.Instance)
+					{
 						nsc.Instance = nsc.InstantiateScript();
-                        nsc.Instance->m_Entity = Entity{ entity, this };
+						nsc.Instance->m_Entity = Entity{ entity, this };
 
 						nsc.Instance->OnCreate();
-                    }
+					}
 
 					nsc.Instance->OnUpdate(ts);
-                });
-        }
+				});
+		}
 
 		// Physics
 		{
@@ -199,30 +218,30 @@ namespace SLEngine {
 			}
 		}
 
-        // Render 2D
-        Camera* mainCamera = nullptr;
+		// Render 2D
+		Camera* mainCamera = nullptr;
 		glm::mat4 cameraTransform;
-        {
-            auto view = m_Registry.view<TransformComponent, CameraComponent>();
-            for (auto entity : view)
-            {
+		{
+			auto view = m_Registry.view<TransformComponent, CameraComponent>();
+			for (auto entity : view)
+			{
 				auto [transform, camera] = view.get<TransformComponent, CameraComponent>(entity);
 
-                if (camera.Primary)
-                {
-                    mainCamera = &camera.Camera;
+				if (camera.Primary)
+				{
+					mainCamera = &camera.Camera;
 					cameraTransform = transform.GetTransform();
-                    break;
-                }
-            }
-        }
+					break;
+				}
+			}
+		}
 
-        if (mainCamera)
-        {
+		if (mainCamera)
+		{
 			Renderer2D::BeginScene(*mainCamera, cameraTransform);
 
 			// Draw sprites
-            {
+			{
 				auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
 				for (auto entity : group)
 				{
@@ -240,12 +259,12 @@ namespace SLEngine {
 
 					Renderer2D::DrawCircle(transform.GetTransform(), circle.Color, circle.Thickness, circle.Fade, (int)entity);
 				}
-            }
+			}
 
-            Renderer2D::EndScene();
-        }
+			Renderer2D::EndScene();
+		}
 
-    }
+	}
 
 	void Scene::OnUpdateEditor(Timestep ts, EditorCamera& camera)
 	{
@@ -275,21 +294,21 @@ namespace SLEngine {
 		Renderer2D::EndScene();
 	}
 
-    void Scene::OnViewportResize(uint32_t width, uint32_t height)
-    {
-        m_ViewportWidth = width;
-        m_ViewportHeight = height;
+	void Scene::OnViewportResize(uint32_t width, uint32_t height)
+	{
+		m_ViewportWidth = width;
+		m_ViewportHeight = height;
 
-        // Resize our non-FixedAspectRatio cameras
-        auto view = m_Registry.view<CameraComponent>();
-        for (auto entity : view)
-        {
-            auto& cameraComponent = view.get<CameraComponent>(entity);
-            if (!cameraComponent.FixedAspectRatio)
-                cameraComponent.Camera.SetViewportSize(width, height);
-        }
+		// Resize our non-FixedAspectRatio cameras
+		auto view = m_Registry.view<CameraComponent>();
+		for (auto entity : view)
+		{
+			auto& cameraComponent = view.get<CameraComponent>(entity);
+			if (!cameraComponent.FixedAspectRatio)
+				cameraComponent.Camera.SetViewportSize(width, height);
+		}
 
-    }
+	}
 
 	void Scene::DuplicateEntity(Entity entity)
 	{
@@ -303,6 +322,7 @@ namespace SLEngine {
 		CopyComponentIfExists<NativeScriptComponent>(newEntity, entity);
 		CopyComponentIfExists<Rigidbody2DComponent>(newEntity, entity);
 		CopyComponentIfExists<BoxCollider2DComponent>(newEntity, entity);
+		CopyComponentIfExists<CircleCollider2DComponent>(newEntity, entity);
 	}
 
 	Entity Scene::GetPrimaryCameraEntity()
@@ -370,4 +390,8 @@ namespace SLEngine {
 	{
 	}
 
+	template<>
+	void Scene::OnComponentAdded<CircleCollider2DComponent>(Entity entity, CircleCollider2DComponent& component)
+	{
+	}
 }
