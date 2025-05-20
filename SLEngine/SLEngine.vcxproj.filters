@@ -234,6 +234,9 @@
     <ClInclude Include="src\SLEngine\Scripting\ScriptEngine.h">
       <Filter>src\SLEngine\Scripting</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\Scripting\ScriptGlue.h">
+      <Filter>src\SLEngine\Scripting</Filter>
+    </ClInclude>
     <ClInclude Include="src\SLEngine\Utils\PlatformUtils.h">
       <Filter>src\SLEngine\Utils</Filter>
     </ClInclude>
@@ -1617,6 +1620,9 @@
       <Filter>src\SLEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Scripting\ScriptEngine.cpp">
+      <Filter>src\SLEngine\Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Scripting\ScriptGlue.cpp">
       <Filter>src\SLEngine\Scripting</Filter>
     </ClCompile>
     <ClCompile Include="src\slpch.cpp">

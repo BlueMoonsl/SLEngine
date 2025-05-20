@@ -200,6 +200,7 @@
     <ClInclude Include="src\SLEngine\Scene\SceneSerializer.h" />
     <ClInclude Include="src\SLEngine\Scene\ScriptableEntity.h" />
     <ClInclude Include="src\SLEngine\Scripting\ScriptEngine.h" />
+    <ClInclude Include="src\SLEngine\Scripting\ScriptGlue.h" />
     <ClInclude Include="src\SLEngine\Utils\PlatformUtils.h" />
     <ClInclude Include="src\slpch.h" />
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h" />
@@ -739,6 +740,9 @@
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Scripting\ScriptEngine.cpp">
+      <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Scripting\ScriptGlue.cpp">
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\slpch.cpp">
