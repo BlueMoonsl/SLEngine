@@ -37,6 +37,9 @@
     <Filter Include="src\SLEngine\Scene">
       <UniqueIdentifier>{2E44C86D-1A28-89C3-8388-83166F8B7345}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\SLEngine\Scripting">
+      <UniqueIdentifier>{936C9EC1-7F66-C713-68D3-5D24546C2D80}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\SLEngine\Utils">
       <UniqueIdentifier>{71D8F56D-5DBC-B6C3-C61C-B116B21FA145}</UniqueIdentifier>
     </Filter>
@@ -227,6 +230,9 @@
     </ClInclude>
     <ClInclude Include="src\SLEngine\Scene\ScriptableEntity.h">
       <Filter>src\SLEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Scripting\ScriptEngine.h">
+      <Filter>src\SLEngine\Scripting</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Utils\PlatformUtils.h">
       <Filter>src\SLEngine\Utils</Filter>
@@ -1609,6 +1615,9 @@
     </ClCompile>
     <ClCompile Include="src\SLEngine\Scene\SceneSerializer.cpp">
       <Filter>src\SLEngine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Scripting\ScriptEngine.cpp">
+      <Filter>src\SLEngine\Scripting</Filter>
     </ClCompile>
     <ClCompile Include="src\slpch.cpp">
       <Filter>src</Filter>

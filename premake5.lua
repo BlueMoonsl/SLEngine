@@ -35,6 +35,15 @@ group "Dependencies"
 	include "SLEngine/vendor/yaml-cpp"
 group ""
 
-include "SLEngine"
-include "Sandbox"
-include "Editor"
+group "Core"
+	include "SLEngine"
+	include "ScriptCore"
+group ""
+
+group "Tools"
+	include "Editor"
+group ""
+
+group "Misc"
+	include "Sandbox"
+group ""

@@ -2,10 +2,11 @@
 #include "SLEngine/Core/Application.h"
 
 #include "SLEngine/Core/Log.h"
+
 #include "SLEngine/Renderer/Renderer.h"
+#include "SLEngine/Scripting/ScriptEngine.h"
 
 #include "SLEngine/Core/Input.h"
-
 #include "SLEngine/Utils/PlatformUtils.h"
 
 namespace SLEngine
@@ -29,6 +30,7 @@ namespace SLEngine
 		m_Window->SetEventCallback(SL_BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();
+		ScriptEngine::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
@@ -38,6 +40,7 @@ namespace SLEngine
 	{
 		SL_PROFILE_FUNCTION();
 
+		ScriptEngine::Shutdown();
 		Renderer::Shutdown();
 	}
 
