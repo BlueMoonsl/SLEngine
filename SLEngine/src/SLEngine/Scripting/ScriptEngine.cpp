@@ -33,11 +33,11 @@ namespace SLEngine {
 		{ "System.UInt32", ScriptFieldType::UInt },
 		{ "System.UInt64", ScriptFieldType::ULong },
 
-		{ "Hazel.Vector2", ScriptFieldType::Vector2 },
-		{ "Hazel.Vector3", ScriptFieldType::Vector3 },
-		{ "Hazel.Vector4", ScriptFieldType::Vector4 },
+		{ "SLEngine.Vector2", ScriptFieldType::Vector2 },
+		{ "SLEngine.Vector3", ScriptFieldType::Vector3 },
+		{ "SLEngine.Vector4", ScriptFieldType::Vector4 },
 
-		{ "Hazel.Entity", ScriptFieldType::Entity },
+		{ "SLEngine.Entity", ScriptFieldType::Entity },
 	};
 
 	namespace Utils {
@@ -90,7 +90,6 @@ namespace SLEngine {
 
 				const char* nameSpace = mono_metadata_string_heap(image, cols[MONO_TYPEDEF_NAMESPACE]);
 				const char* name = mono_metadata_string_heap(image, cols[MONO_TYPEDEF_NAME]);
-
 				SL_CORE_TRACE("{}.{}", nameSpace, name);
 			}
 		}
@@ -134,9 +133,13 @@ namespace SLEngine {
 		Scope<filewatch::FileWatch<std::string>> AppAssemblyFileWatcher;
 		bool AssemblyReloadPending = false;
 
+#ifdef SL_DEBUG
 		bool EnableDebugging = true;
-
+#else
+		bool EnableDebugging = false;
+#endif
 		// Runtime
+
 		Scene* SceneContext = nullptr;
 	};
 
@@ -155,7 +158,6 @@ namespace SLEngine {
 				});
 		}
 	}
-
 
 	void ScriptEngine::Init()
 	{
@@ -176,13 +178,13 @@ namespace SLEngine {
 			SL_CORE_ERROR("[ScriptEngine] Could not load app assembly.");
 			return;
 		}
+
 		LoadAssemblyClasses();
 
 		ScriptGlue::RegisterComponents();
 
 		// Retrieve and instantiate class
 		s_Data->EntityClass = ScriptClass("SLEngine", "Entity", true);
-
 	}
 
 	void ScriptEngine::Shutdown()
@@ -190,7 +192,6 @@ namespace SLEngine {
 		ShutdownMono();
 		delete s_Data;
 	}
-
 
 	void ScriptEngine::InitMono()
 	{
@@ -251,6 +252,7 @@ namespace SLEngine {
 		s_Data->AppAssembly = Utils::LoadMonoAssembly(filepath, s_Data->EnableDebugging);
 		if (s_Data->AppAssembly == nullptr)
 			return false;
+
 		s_Data->AppAssemblyImage = mono_assembly_get_image(s_Data->AppAssembly);
 
 		s_Data->AppAssemblyFileWatcher = CreateScope<filewatch::FileWatch<std::string>>(filepath.string(), OnAppAssemblyFileSystemEvent);
@@ -334,6 +336,7 @@ namespace SLEngine {
 		return it->second;
 	}
 
+
 	Ref<ScriptClass> ScriptEngine::GetEntityClass(const std::string& name)
 	{
 		if (s_Data->EntityClasses.find(name) == s_Data->EntityClasses.end())
@@ -416,17 +419,20 @@ namespace SLEngine {
 					scriptClass->m_Fields[fieldName] = { fieldType, fieldName, field };
 				}
 			}
+
 		}
 
 		auto& entityClasses = s_Data->EntityClasses;
 
 		//mono_field_get_value()
+
 	}
 
 	MonoImage* ScriptEngine::GetCoreAssemblyImage()
 	{
 		return s_Data->CoreAssemblyImage;
 	}
+
 
 	MonoObject* ScriptEngine::GetManagedInstance(UUID uuid)
 	{

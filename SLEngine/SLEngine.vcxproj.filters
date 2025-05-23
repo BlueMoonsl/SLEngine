@@ -31,6 +31,9 @@
     <Filter Include="src\SLEngine\Math">
       <UniqueIdentifier>{CA1D779E-3634-7534-7FAB-0056EB0046BC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\SLEngine\Project">
+      <UniqueIdentifier>{9783AB3D-8312-3507-2C31-4902189F45AD}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\SLEngine\Renderer">
       <UniqueIdentifier>{170D29E0-8379-E4DA-4C6D-7C38B8980643}</UniqueIdentifier>
     </Filter>
@@ -173,6 +176,12 @@
     </ClInclude>
     <ClInclude Include="src\SLEngine\Math\Math.h">
       <Filter>src\SLEngine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Project\Project.h">
+      <Filter>src\SLEngine\Project</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Project\ProjectSerializer.h">
+      <Filter>src\SLEngine\Project</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Renderer\Buffer.h">
       <Filter>src\SLEngine\Renderer</Filter>
@@ -1509,6 +1518,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\UI\UI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1573,6 +1583,12 @@
     </ClCompile>
     <ClCompile Include="src\SLEngine\Math\Math.cpp">
       <Filter>src\SLEngine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Project\Project.cpp">
+      <Filter>src\SLEngine\Project</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Project\ProjectSerializer.cpp">
+      <Filter>src\SLEngine\Project</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\Buffer.cpp">
       <Filter>src\SLEngine\Renderer</Filter>

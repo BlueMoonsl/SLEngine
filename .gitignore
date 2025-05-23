@@ -17,5 +17,4 @@ Intermediates/
 # Directories
 SLEngine/vendor/VulkanSDK
 Editor/assets/cache
-
 scripts/__pycache__

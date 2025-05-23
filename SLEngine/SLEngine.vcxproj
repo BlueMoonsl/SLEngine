@@ -180,6 +180,8 @@
     <ClInclude Include="src\SLEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\SLEngine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\SLEngine\Math\Math.h" />
+    <ClInclude Include="src\SLEngine\Project\Project.h" />
+    <ClInclude Include="src\SLEngine\Project\ProjectSerializer.h" />
     <ClInclude Include="src\SLEngine\Renderer\Buffer.h" />
     <ClInclude Include="src\SLEngine\Renderer\Camera.h" />
     <ClInclude Include="src\SLEngine\Renderer\EditorCamera.h" />
@@ -203,6 +205,7 @@
     <ClInclude Include="src\SLEngine\Scene\ScriptableEntity.h" />
     <ClInclude Include="src\SLEngine\Scripting\ScriptEngine.h" />
     <ClInclude Include="src\SLEngine\Scripting\ScriptGlue.h" />
+    <ClInclude Include="src\SLEngine\UI\UI.h" />
     <ClInclude Include="src\SLEngine\Utils\PlatformUtils.h" />
     <ClInclude Include="src\slpch.h" />
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h" />
@@ -688,6 +691,12 @@
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Math\Math.cpp">
+      <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Project\Project.cpp">
+      <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Project\ProjectSerializer.cpp">
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Renderer\Buffer.cpp">

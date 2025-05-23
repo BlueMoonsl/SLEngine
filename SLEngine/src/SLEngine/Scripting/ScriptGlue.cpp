@@ -158,11 +158,12 @@ namespace SLEngine {
 		SL_ADD_INTERNAL_CALL(NativeLog);
 		SL_ADD_INTERNAL_CALL(NativeLog_Vector);
 		SL_ADD_INTERNAL_CALL(NativeLog_VectorDot);
-
+		
 		SL_ADD_INTERNAL_CALL(GetScriptInstance);
-
+		
 		SL_ADD_INTERNAL_CALL(Entity_HasComponent);
 		SL_ADD_INTERNAL_CALL(Entity_FindEntityByName);
+		
 		SL_ADD_INTERNAL_CALL(TransformComponent_GetTranslation);
 		SL_ADD_INTERNAL_CALL(TransformComponent_SetTranslation);
 		

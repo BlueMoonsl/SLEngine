@@ -20,6 +20,8 @@
 #include "SLEngine/Scene/ScriptableEntity.h"
 #include "SLEngine/Scene/Components.h"
 
+#include "SLEngine/Project/Project.h"
+
 // ---Renderer------------------------
 #include "SLEngine/Renderer/Renderer.h"
 #include "SLEngine/Renderer/Renderer2D.h"
