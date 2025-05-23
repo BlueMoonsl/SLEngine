@@ -111,7 +111,13 @@
     <ClInclude Include="src\SLEngine\Core\Base.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\SLEngine\Core\Buffer.h">
+      <Filter>src\SLEngine\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\SLEngine\Core\EntryPoint.h">
+      <Filter>src\SLEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SLEngine\Core\FileSystem.h">
       <Filter>src\SLEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\Core\Input.h">
@@ -1503,7 +1509,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="vendor\FileWatch\FileWatch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1540,6 +1545,9 @@
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Core\Application.cpp">
+      <Filter>src\SLEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Core\FileSystem.cpp">
       <Filter>src\SLEngine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Core\Layer.cpp">

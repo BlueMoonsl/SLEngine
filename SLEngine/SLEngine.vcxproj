@@ -159,7 +159,9 @@
     <ClInclude Include="src\SLEngine\Core\Application.h" />
     <ClInclude Include="src\SLEngine\Core\Assert.h" />
     <ClInclude Include="src\SLEngine\Core\Base.h" />
+    <ClInclude Include="src\SLEngine\Core\Buffer.h" />
     <ClInclude Include="src\SLEngine\Core\EntryPoint.h" />
+    <ClInclude Include="src\SLEngine\Core\FileSystem.h" />
     <ClInclude Include="src\SLEngine\Core\Input.h" />
     <ClInclude Include="src\SLEngine\Core\KeyCodes.h" />
     <ClInclude Include="src\SLEngine\Core\Layer.h" />
@@ -203,7 +205,6 @@
     <ClInclude Include="src\SLEngine\Scripting\ScriptGlue.h" />
     <ClInclude Include="src\SLEngine\Utils\PlatformUtils.h" />
     <ClInclude Include="src\slpch.h" />
-    <ClInclude Include="vendor\FileWatch\FileWatch.h" />
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -660,6 +661,9 @@
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Core\Application.cpp">
+      <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="src\SLEngine\Core\FileSystem.cpp">
       <AdditionalOptions>-utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="src\SLEngine\Core\Layer.cpp">

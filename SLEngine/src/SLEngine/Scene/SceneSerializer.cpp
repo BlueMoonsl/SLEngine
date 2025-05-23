@@ -459,44 +459,46 @@ namespace SLEngine {
 					if (scriptFields)
 					{
 						Ref<ScriptClass> entityClass = ScriptEngine::GetEntityClass(sc.ClassName);
-						SL_CORE_ASSERT(entityClass);
-						const auto& fields = entityClass->GetFields();
-						auto& entityFields = ScriptEngine::GetScriptFieldMap(deserializedEntity);
-
-						for (auto scriptField : scriptFields)
+						if (entityClass)
 						{
-							std::string name = scriptField["Name"].as<std::string>();
-							std::string typeString = scriptField["Type"].as<std::string>();
-							ScriptFieldType type = Utils::ScriptFieldTypeFromString(typeString);
+							const auto& fields = entityClass->GetFields();
+							auto& entityFields = ScriptEngine::GetScriptFieldMap(deserializedEntity);
 
-							ScriptFieldInstance& fieldInstance = entityFields[name];
-
-							// TODO(Yan): turn this assert into Editor log warning
-							SL_CORE_ASSERT(fields.find(name) != fields.end());
-
-							if (fields.find(name) == fields.end())
-								continue;
-
-							fieldInstance.Field = fields.at(name);
-
-							switch (type)
+							for (auto scriptField : scriptFields)
 							{
-								READ_SCRIPT_FIELD(Float, float);
-								READ_SCRIPT_FIELD(Double, double);
-								READ_SCRIPT_FIELD(Bool, bool);
-								READ_SCRIPT_FIELD(Char, char);
-								READ_SCRIPT_FIELD(Byte, int8_t);
-								READ_SCRIPT_FIELD(Short, int16_t);
-								READ_SCRIPT_FIELD(Int, int32_t);
-								READ_SCRIPT_FIELD(Long, int64_t);
-								READ_SCRIPT_FIELD(UByte, uint8_t);
-								READ_SCRIPT_FIELD(UShort, uint16_t);
-								READ_SCRIPT_FIELD(UInt, uint32_t);
-								READ_SCRIPT_FIELD(ULong, uint64_t);
-								READ_SCRIPT_FIELD(Vector2, glm::vec2);
-								READ_SCRIPT_FIELD(Vector3, glm::vec3);
-								READ_SCRIPT_FIELD(Vector4, glm::vec4);
-								READ_SCRIPT_FIELD(Entity, UUID);
+								std::string name = scriptField["Name"].as<std::string>();
+								std::string typeString = scriptField["Type"].as<std::string>();
+								ScriptFieldType type = Utils::ScriptFieldTypeFromString(typeString);
+
+								ScriptFieldInstance& fieldInstance = entityFields[name];
+
+								// TODO(Yan): turn this assert into Hazelnut log warning
+								SL_CORE_ASSERT(fields.find(name) != fields.end());
+
+								if (fields.find(name) == fields.end())
+									continue;
+
+								fieldInstance.Field = fields.at(name);
+
+								switch (type)
+								{
+									READ_SCRIPT_FIELD(Float, float);
+									READ_SCRIPT_FIELD(Double, double);
+									READ_SCRIPT_FIELD(Bool, bool);
+									READ_SCRIPT_FIELD(Char, char);
+									READ_SCRIPT_FIELD(Byte, int8_t);
+									READ_SCRIPT_FIELD(Short, int16_t);
+									READ_SCRIPT_FIELD(Int, int32_t);
+									READ_SCRIPT_FIELD(Long, int64_t);
+									READ_SCRIPT_FIELD(UByte, uint8_t);
+									READ_SCRIPT_FIELD(UShort, uint16_t);
+									READ_SCRIPT_FIELD(UInt, uint32_t);
+									READ_SCRIPT_FIELD(ULong, uint64_t);
+									READ_SCRIPT_FIELD(Vector2, glm::vec2);
+									READ_SCRIPT_FIELD(Vector3, glm::vec3);
+									READ_SCRIPT_FIELD(Vector4, glm::vec4);
+									READ_SCRIPT_FIELD(Entity, UUID);
+								}
 							}
 						}
 					}
@@ -541,18 +543,18 @@ namespace SLEngine {
 					bc2d.Friction = boxCollider2DComponent["Friction"].as<float>();
 					bc2d.Restitution = boxCollider2DComponent["Restitution"].as<float>();
 					bc2d.RestitutionThreshold = boxCollider2DComponent["RestitutionThreshold"].as<float>();
-					
-					auto circleCollider2DComponent = entity["CircleCollider2DComponent"];
-					if (circleCollider2DComponent)
-					{
-						auto& cc2d = deserializedEntity.AddComponent<CircleCollider2DComponent>();
-						cc2d.Offset = circleCollider2DComponent["Offset"].as<glm::vec2>();
-						cc2d.Radius = circleCollider2DComponent["Radius"].as<float>();
-						cc2d.Density = circleCollider2DComponent["Density"].as<float>();
-						cc2d.Friction = circleCollider2DComponent["Friction"].as<float>();
-						cc2d.Restitution = circleCollider2DComponent["Restitution"].as<float>();
-						cc2d.RestitutionThreshold = circleCollider2DComponent["RestitutionThreshold"].as<float>();
-					}
+				}
+
+				auto circleCollider2DComponent = entity["CircleCollider2DComponent"];
+				if (circleCollider2DComponent)
+				{
+					auto& cc2d = deserializedEntity.AddComponent<CircleCollider2DComponent>();
+					cc2d.Offset = circleCollider2DComponent["Offset"].as<glm::vec2>();
+					cc2d.Radius = circleCollider2DComponent["Radius"].as<float>();
+					cc2d.Density = circleCollider2DComponent["Density"].as<float>();
+					cc2d.Friction = circleCollider2DComponent["Friction"].as<float>();
+					cc2d.Restitution = circleCollider2DComponent["Restitution"].as<float>();
+					cc2d.RestitutionThreshold = circleCollider2DComponent["RestitutionThreshold"].as<float>();
 				}
 			}
 		}
