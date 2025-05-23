@@ -18,8 +18,9 @@ project "Editor"
  		"%{wks.location}/SLEngine/vendor/spdlog/include",
  		"%{wks.location}/SLEngine/src",
  		"%{wks.location}/SLEngine/vendor",
- 		"%{IncludeDir.glm}",
  		"%{IncludeDir.entt}",
+		"%{IncludeDir.filewatch}",
+		"%{IncludeDir.glm}",
 		"%{IncludeDir.ImGuizmo}"
  	}
  
