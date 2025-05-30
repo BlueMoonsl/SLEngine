@@ -30,7 +30,6 @@ namespace SLEngine
 		m_Window->SetEventCallback(SL_BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();
-		ScriptEngine::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);

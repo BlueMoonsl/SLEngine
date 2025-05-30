@@ -180,6 +180,7 @@
     <ClInclude Include="src\SLEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\SLEngine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\SLEngine\Math\Math.h" />
+    <ClInclude Include="src\SLEngine\Physics\Physics2D.h" />
     <ClInclude Include="src\SLEngine\Project\Project.h" />
     <ClInclude Include="src\SLEngine\Project\ProjectSerializer.h" />
     <ClInclude Include="src\SLEngine\Renderer\Buffer.h" />

@@ -17,6 +17,8 @@
 #include "SLEngine/Core/Buffer.h"
 #include "SLEngine/Core/FileSystem.h"
 
+#include "SLEngine/Project/Project.h"
+
 namespace SLEngine {
 
 	static std::unordered_map<std::string, ScriptFieldType> s_ScriptFieldTypeMap =
@@ -172,7 +174,9 @@ namespace SLEngine {
 			SL_CORE_ERROR("[ScriptEngine] Could not load ScriptCore assembly.");
 			return;
 		}
-		status = LoadAppAssembly("SandboxProject/Assets/Scripts/Binaries/Sandbox.dll");
+		
+		auto scriptModulePath = Project::GetAssetDirectory() / Project::GetActive()->GetConfig().ScriptModulePath;
+		status = LoadAppAssembly(scriptModulePath);
 		if (!status)
 		{
 			SL_CORE_ERROR("[ScriptEngine] Could not load app assembly.");

@@ -1519,6 +1519,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\SLEngine\UI\UI.h" />
+    <ClInclude Include="src\SLEngine\Physics\Physics2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
